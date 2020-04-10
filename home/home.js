@@ -146,14 +146,19 @@ function insertTrendingResults(array) {
 
     //Borro si tiene contenido
     let container = document.getElementById("resultado-tendencias");  
+    let cont = 0;
     let contDobles = 0;
-    for (let i=0; i < cantidadTendencia; i++) {
+    for (let i=0; i < array.length && cont < cantidadTendencia; i++) {
         //Maqueto el contenido
         let clase_doble = '';
         if (contDobles < 4 && (array[i].images.original.width >= (array[i].images.original.height * 1.4)))
         {
             clase_doble = "doble";
             contDobles++;
+            cont+=2;
+        }
+        else {
+            cont++;
         }
         let contenido = document.createElement("div");
         contenido.setAttribute("class", "tendencia "+ clase_doble);
