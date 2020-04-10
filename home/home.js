@@ -1,7 +1,7 @@
 /* End Points */
-const searchEndpoint = 'http://api.giphy.com/v1/gifs/search?q=';
-const trendingEndpoint = 'http://api.giphy.com/v1/gifs/trending';
-const randomEndpoint = 'http://api.giphy.com/v1/gifs/random';
+const searchEndpoint = 'https://api.giphy.com/v1/gifs/search?q=';
+const trendingEndpoint = 'https://api.giphy.com/v1/gifs/trending';
+const randomEndpoint = 'https://api.giphy.com/v1/gifs/random';
 const sugerenciasURL = 'https://suggestqueries.google.com/complete/search?output=firefox';
 const cantOpcionesSugeredias = 3;
 
