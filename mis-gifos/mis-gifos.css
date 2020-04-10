@@ -36,4 +36,15 @@
   height: 298px;
   width: 100%;
 }
+
+@media screen and (max-width: 767px) {
+  .mis-gifos .resultado-mis-gifos {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+    grid-gap: 0 0 16px 0;
+  }
+  .mis-gifos .resultado-mis-gifos .item.doble {
+    grid-column: unset;
+  }
+}
 /*# sourceMappingURL=mis-gifos.css.map */

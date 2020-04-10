@@ -137,6 +137,9 @@ body {
         nav {
             flex-direction: column;
             padding: 0 16px;
+            .arrow-back {
+                margin-bottom: 10px;
+            }
             .options {
                 flex-direction: column;
                 flex-wrap: wrap;
@@ -150,6 +153,48 @@ body {
         }
         .main-container {
             padding: 0 16px;
+        }
+        .upload-gif {
+            padding: 75px 0px 75px 0px;
+            width: 100%;
+            .container {
+                .opciones {
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 0;
+                    .btn {
+                        margin: 0px 10px;
+                        flex: 1 0 40%;
+                        .text {
+                            padding: 7px 10px;
+                        }
+                    }
+                }
+                .opciones-video {
+                    .tiempo {
+                        width: 70px;
+                    }
+                    .btn {
+                        .text {
+                            padding: 6px 15px;
+                        }
+                    }
+                }
+                .resultado-upload {
+                    flex-direction: column;
+                    padding: 5px;
+                    .video-container {
+                        width: 100%;
+                        margin-bottom: 0;
+                    }
+                    .opciones-descarga {
+                        margin-top: 10px;
+                        margin-right: 0;
+                        padding-left: 0;
+                        margin-bottom: 10px;
+                    }
+            }
         }
     }
 }
