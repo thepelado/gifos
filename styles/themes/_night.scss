@@ -1,0 +1,394 @@
+$text-color: #FFF;
+$back-main-color: #110038;
+
+$underline-color: #FFF;
+$box-shadow-color: #110038;
+$boder-hover-color: #FFF;
+
+$gradient-color-primary:#EE3EFE;
+$gradient-color-secondary:#2E32FB ;
+
+$contenedor: (
+    back: #B4B4B4,
+    shadow-primary: #8F8F8F,
+    shadow-secondary: #FFFFFF
+);
+
+$random-section: (
+    back-color: #FFFAFE,
+    border: #2E32FB,
+    shadow-primary: #E6DCE4,
+    shadow-secondary: #110038
+);
+
+$btn: (
+    color: #110038,
+    back-color: #F0F0F0,
+    back-color-hover:#DBDBDB,
+    border: #808080,
+    shadow-primary: #B4B4B4,
+    shadow-secondary: #FFFFFF
+);
+
+$btn-primary: (
+    color: #FFF,
+    back-color: #EE3EFE,
+    border: #110038,
+    shadow-primary: #A72CB3,
+    shadow-secondary: #FFFFFF,
+    btn-disabled-color: #B4B4B4,
+    btn-disabled-background: #E6E6E6,
+    btn-disabled-line-color: #808080,
+    btn-disabled-shadow-primary: #B4B4B4,
+    btn-disabled-shadow-secondary: #FFFFFF,
+    btn-hover-background: #CE36DB,
+    btn-hover-boder-color: #110038
+);
+
+$btn-secondary: (
+    color: #FFF,
+    back-color: #110038,
+    back-color-hover: #110038,
+    border: #B4B4B4,
+    shadow-primary: #5C5C5C,
+    shadow-secondary: #FFF4FD,
+    btn-hover-boder-color: #FFFFFF
+);
+
+$btn-ver-mas: (
+    color: #FFF,
+    back-color: #4180F6,
+    back-color-hover: #2629CC,
+    border: #4C2F99,
+    shadow-primary: #284F99,
+    shadow-secondary: #FFFFFF,
+    btn-hover-boder-color: #110038
+);
+
+$btn-theme: (
+    color: #000,
+    back-color: #CCCCCC,
+    border: #808080,
+    shadow-primary: #B4B4B4,
+    shadow-secondary: #FFFFFF,
+    active-color: #FFF,
+    active-back-color: #2E32FB,
+    active-border: rgba(51,53,143,0.20),
+    active-shadow-primary: #E6DCE4,
+    active-shadow-secondary: #FFFFFF
+);
+
+$btn-active: (
+    color: #FFF,
+    back-color: #2E32FB,
+    border: rgba(51,53,143,0.20),
+    shadow-primary: #E6DCE4,
+    shadow-secondary: #FFFFFF
+);
+
+$btn-link: (
+    color: #FFF,
+);
+
+$informacion: (
+    color: #110038
+);
+
+$video-container: (
+    back: #FFFFFF,
+    border: #979797,
+    shadow-primary: #E6E6E6,
+    shadow-secondary: #000000
+);
+
+$btn-grabar-finalizar: (
+    color: #FFF,
+    back: #FF6161,
+    border: #110038,
+    shadow-primary: #993A3A,
+    shadow-secondary: #FFFFFF,
+);
+
+.night {
+    background-color: $back-main-color;
+    header {
+        color: $text-color;
+        box-shadow: 0 1px 0 0 $box-shadow-color;
+    }
+    .gradient {
+        background-image: linear-gradient(270deg, $gradient-color-primary 0%, $gradient-color-secondary 100%);
+    }
+    .logo {
+        background: url(../assets/images/gifOF_logo.png) top center no-repeat;
+        width: 90px;
+        height: 48px;
+    }
+    .shadow {
+        background: #FFFFFF;
+        border: 1px solid #979797;
+        box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
+    }
+    .btn {
+        background: map-get($btn, back-color);
+        border: 1px solid map-get($btn, border);
+        box-shadow: inset -1px -1px 0 0 map-get($btn, shadow-primary), inset 1px 1px 0 0 map-get($btn-primary, shadow-secondary);
+        span {
+            border: 1px dotted transparent;
+        }
+        &:hover,
+        &:active {
+            background: map-get($btn, back-color-hover);
+            span {
+                border: 1px dotted map-get($btn-primary, btn-hover-boder-color);
+            }
+        }
+        .underline {
+            border-bottom: 0;
+        }
+        &.btn-primary {
+            color: map-get($btn-primary, color);
+            border: 1px solid map-get($btn-primary, border);
+            background: map-get($btn-primary, back-color);            
+            box-shadow: inset -1px -1px 0 0 map-get($btn-primary, shadow-primary), inset 1px 1px 0 0 map-get($btn-primary, shadow-secondary);
+            &:disabled {
+                color: map-get($btn-primary, btn-disabled-color);
+                border: 1px solid map-get($btn-primary, btn-disabled-line-color);
+                background: map-get($btn-primary, btn-disabled-background);
+                box-shadow: inset -1px -1px 0 0 map-get($btn-primary, btn-disabled-shadow-primary), inset 1px 1px 0 0 map-get($btn-primary, btn-disabled-shadow-secondary);
+            }
+            &:hover,
+            &:active{
+                background: map-get($btn-primary, btn-hover-background);
+            }
+        }
+        &.btn-secondary {
+            color: map-get($btn-secondary, color);
+            border: 1px solid map-get($btn-secondary, border);
+            background: map-get($btn-secondary, back-color);            
+            box-shadow: inset -1px -1px 0 0 map-get($btn-secondary, shadow-primary), inset 1px 1px 0 0 map-get($btn-secondary, shadow-secondary);
+            &:hover,
+            &:active {
+                background: map-get($btn-secondary, back-color-hover);
+                span {
+                    border: 1px dotted map-get($btn-secondary, btn-hover-boder-color);
+                }
+            }
+        }
+        &.btn-ver-mas {
+            color: map-get($btn-ver-mas, color);
+            border: 1px solid map-get($btn-ver-mas, border);
+            background: map-get($btn-ver-mas, back-color);            
+            box-shadow: inset -2px -2px 0 0 map-get($btn-ver-mas, shadow-primary), inset 2px 2px 0 0 map-get($btn-ver-mas, shadow-secondary);
+            &:hover,
+            &:active {
+                background: map-get($btn-ver-mas, back-color-hover);
+                outline: 1px dotted map-get($btn-ver-mas, btn-hover-boder-color);
+                outline-offset: -4px;
+            }
+        }
+        &.btn-theme {
+            color: map-get($btn-theme, color);
+            border: 1px solid map-get($btn-theme, border);
+            background: map-get($btn-theme, back-color);            
+            box-shadow: inset -1px -1px 0 0 map-get($btn-theme, shadow-primary), inset 1px 1px 0 0 map-get($btn-theme, shadow-secondary);
+            &.active,
+            &:hover {
+                color: map-get($btn-theme, active-color);
+                border: 1px solid map-get($btn-theme, active-border);
+                background: map-get($btn-theme, active-back-color);            
+                box-shadow: inset -1px -1px 0 0 map-get($btn-theme, active-shadow-primary), inset 1px 1px 0 0 map-get($btn-theme, active-shadow-secondary);
+                .underline {
+                    border-bottom: 1px solid $underline-color;
+                }
+                span {
+                    border: 1px solid transparent;
+                }
+            }
+            &:active {
+                span {
+                    border: 1px solid transparent;
+                }
+            }
+        }
+        &.btn-dropdown {
+            &::after {
+                border: 1px solid map-get($btn-primary, border);
+                background: url(../assets/images/dropdown.svg) center center no-repeat;
+                &:hover,
+                &:active{
+                    border: 1px dotted map-get($btn-primary, btn-hover-boder-color);
+                }
+            }
+            &:hover {
+                &::after {
+                    outline: 1.4px dotted map-get($btn-primary, btn-hover-boder-color);
+                    outline-offset: -4px;
+                }
+            }
+        }
+        &.btn-link {
+            background-color: unset;
+            color: map-get($btn-link, color );
+            padding: 7px 18px 7px 0;
+            border: 1px dotted transparent;
+            box-shadow: unset;
+            span {
+                border: unset;
+            }
+            .underline {
+                border-bottom: 1px solid $underline-color;
+            }
+            &:hover {
+                border: 1px dotted $boder-hover-color;
+            }
+            &:active {
+                opacity: 0.56;
+                border: 1px dotted transparent;
+            }
+        }
+        &.btn-buscar {
+            .lupa {
+                background: url('../assets/images/lupa.svg') center center no-repeat;
+                border: none;
+            }
+            &:hover {
+                outline: 1px dotted map-get($btn-primary, btn-hover-boder-color);
+                outline-offset: -4px;
+                span {
+                    border: 1px solid transparent;
+                }
+            }
+        }
+        &.btn-grabar-comenzar {
+            &::before {
+                background: url(../assets/images/camera.svg) center center no-repeat;
+                border-right: 1px solid map-get($btn-primary, btn-hover-boder-color);
+            }
+            &:hover {
+                &::before {
+                    outline: 1.4px dotted map-get($btn-primary, btn-hover-boder-color);
+                    outline-offset: -4px;
+                }
+            }
+        }
+        &.btn-grabar-finalizar {
+            color: map-get($btn-grabar-finalizar, color);
+            background: map-get($btn-grabar-finalizar, back);
+            border: 1px solid map-get($btn-grabar-finalizar, border);
+            box-shadow: inset -1px -1px 0 0 map-get($btn-grabar-finalizar, shadow-primary), inset 1px 1px 0 0 map-get($btn-grabar-finalizar, shadow-secondary);
+            &::before { 
+                background: url(../assets/images/recording.svg) center center no-repeat;
+                background-repeat: no-repeat;
+                background-position: center;
+                border: 1px solid map-get($btn-grabar-finalizar, border);
+                box-shadow: inset -1px -1px 0 0 map-get($btn-grabar-finalizar, shadow-primary), inset 1px 1px 0 0 map-get($btn-grabar-finalizar, shadow-secondary);
+            }
+            &:hover {
+                background: map-get($btn-grabar-finalizar, back);
+                &::before {
+                    outline: 1.4px dotted map-get($btn-grabar-finalizar, border);
+                    outline-offset: -4px;
+                    box-shadow: unset;
+                }
+            }
+        }
+    }
+    .menu-changer {
+        &.open {
+            .btn-primary {
+                background: map-get($btn-primary, btn-hover-background);
+                span {
+                    border: 1px dotted map-get($btn-primary, btn-hover-boder-color);
+                }
+                &::after {
+                    outline: 1.4px dotted map-get($btn-primary, btn-hover-boder-color);
+                    outline-offset: -4px;
+                }
+            }
+            .menu-list {
+                display: block;
+                transition: opacity .4s ease-in-out;
+            }
+        }
+    }
+    .container {
+        position: relative;
+        background: map-get($contenedor, back);
+        box-shadow: inset -2px -2px 0 0 map-get($contenedor, shadow-primary), inset 2px 2px 0 0 map-get($contenedor, shadow-secondary);
+    }
+    .buscar {
+        p {
+            color: #FFF;
+        }
+    }
+    .resultado {
+        .titulo {
+            background: map-get($random-section, back-color);
+            border: 1px solid map-get($random-section, border);
+            box-shadow: inset -2px -2px 0 0 map-get($random-section, shadow-primary), inset 2px 2px 0 0 map-get($random-section, shadow-secondary);
+        }
+        .resultado-busqueda {
+            .item {
+                box-shadow: unset;
+                background: unset;
+                &:hover {
+                    background: map-get($contenedor, back);
+                    box-shadow: inset -2px -2px 0 0 map-get($contenedor, shadow-primary), inset 2px 2px 0 0 map-get($contenedor, shadow-secondary);
+                    .container {
+                        border: 1px dotted $boder-hover-color;                        
+                    }
+                }
+            }
+        }
+        .resultado-sugeridos {
+            .etiqueta {
+                color: #FFF;
+            }                
+            .sugerido {
+                background: map-get($contenedor, back);
+                box-shadow: inset -2px -2px 0 0 map-get($contenedor, shadow-primary), inset 2px 2px 0 0 map-get($contenedor, shadow-secondary);
+                &:hover {
+                    background: map-get($contenedor, back);
+                    box-shadow: inset -2px -2px 0 0 map-get($contenedor, shadow-primary), inset 2px 2px 0 0 map-get($contenedor, shadow-secondary);
+                    .gif {
+                        border: 1px dotted $boder-hover-color;                        
+                    }
+                    .btn {
+                        &.btn-ver-mas {
+                            background: map-get($btn-ver-mas, back-color-hover);
+                            outline: 1px dotted map-get($btn-ver-mas, btn-hover-boder-color);
+                            outline-offset: -4px;
+                        }
+                    }
+                }
+            }
+        }
+        .resultado-tendencias {
+            .tendencia {
+                background: map-get($contenedor, back);
+                .container {
+                    background: unset;
+                    box-shadow: unset;
+                }
+                &:hover {                    
+                    box-shadow: inset -2px -2px 0 0 map-get($contenedor, shadow-primary), inset 2px 2px 0 0 map-get($contenedor, shadow-secondary);    
+                    .container {
+                        border: 1px dotted $boder-hover-color;                        
+                    }
+                }
+            }
+        }
+    }
+    .upload-gif {
+        .informacion {
+            .texto {
+                color: map-get($informacion, color);
+            }
+        }
+        video {
+            background: map-get($video-container, color);
+            border: 1px solid map-get($video-container, border);
+            box-shadow: inset -2px -2px 0 0 map-get($video-container, shadow-primary), inset 2px 2px 0 0 map-get($video-container, shadow-secondary);
+        }
+    }
+}

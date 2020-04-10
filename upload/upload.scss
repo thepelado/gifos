@@ -1,0 +1,231 @@
+.upload-gif {    
+    padding: 75px 21.9% 75px 18.4%;
+    width: 100%;
+    .container {
+        h2 {
+            font-size: 16px;
+            color: #110038;
+            letter-spacing: 0;
+            line-height: 22px;
+            margin-top: 8px;
+        }
+        .gradient {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            p {
+                color: #FFF;
+                padding: 3.4px 7px 2.6px;
+                width: 100%;
+            }
+            img {
+                margin-right: 10px;
+            }
+        }
+        .cuerpo {
+            padding: 8px 11px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .informacion {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: flex-start;
+            .icono {
+                width: 32px;
+                height: 29px;
+                margin-top: 30px;
+                margin-left: 25px;
+            }
+            .texto {
+                margin: 30px 16px 28px 16px;                
+                h2 {
+                    font-size: 16px;
+                    letter-spacing: 0;
+                    line-height: 22px;
+                    font-weight: 900;
+                    margin-bottom: 17px;
+                }
+                ol {
+                    list-style: none;
+                    li {
+                        margin: 11px 0;
+                        counter-increment: item;
+                        &::before {
+                            content: counter(item) ") ";
+                            font-weight: 900;
+                        }                        
+                    }
+                }
+                strong {
+                    font-weight: 900;
+                }
+            }
+        }
+        .opciones {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+            width: 100%;
+            padding-right: 36px;
+            margin-bottom: 36px;
+            .btn {
+                .text {
+                    padding: 7px 35px;
+                }
+            }
+        }
+        .video-container {
+            padding: 8px 14px 21px 8px;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+            .video {
+                padding: 2px;
+                width: 100%;
+                height: 100%;
+                display: block;
+            }
+        }
+        .opciones-video {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            width: 100%;
+            padding-right: 13px;
+            margin-bottom: 13px;
+            .btn {
+                .text {
+                    padding: 6px 39.5px;
+                }
+                &.btn-grabar-comenzar,
+                &.btn-grabar-finalizar {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: flex-start;
+                    flex-wrap: wrap;
+                    &::before {
+                        padding: 17px 22px;
+                        align-self: stretch;
+                        margin-top: -3px;
+                        margin-bottom: -3px;
+                        margin-left: -3px;
+                        content: "";
+                        margin-right: 1px;
+                    }
+                }
+            }
+            .tiempo {
+                font-size: 16px;
+                line-height: 22px;
+                margin-right: auto;
+                margin-left: 11px;
+                padding: 7px 13px 7px 21px;
+                width: 124px;
+                text-align: right;
+            }
+        }
+        .uploader {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 13.6% 17.8%;
+            background: #FFFFFF;
+            border: 1px solid #979797;
+            box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
+            width: 100%;
+            .texto {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                .barra {
+                    margin-top: 39px;
+                    background: #B4B4B4;
+                    box-shadow: inset 2px 2px 0 0 #000000, inset -2px -2px 0 0 #FFFCFC;
+                    width: 100%;
+                    height: 24px;
+                    list-style: none;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    padding: 2px;
+                    justify-content: flex-start;
+                    width: 324px;
+                    .carga {
+                        background: #999999;
+                        margin-right: 2px;
+                        width: 12px;
+                        height: 20px;
+                        &.completa {
+                            background: #F7C9F3;
+                        }
+                        &:last-child {
+                            margin-right: 0;
+                        }
+                    }
+                }
+                p {
+                    margin-top: 8px;
+                    font-size: 12px;
+                    color: rgba(17,0,56,0.64);
+                    letter-spacing: 0;
+                    text-align: center;
+                    line-height: 14px;
+                    .tachado {
+                        text-decoration: line-through;
+                    }
+                }
+            }
+        }
+        .resultado-upload {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: flex-start;
+            width: 100%;
+            .video-container {
+                margin-top: 25px;
+                margin-left: 1.7%;
+                padding:1px;
+                margin-bottom: 144px;
+                background: #FFFFFF;
+                border: 1px solid #979797;
+                box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
+                .video {
+                    padding: 0;
+                }
+            }
+            .opciones-descarga {
+                margin-top: 49px;
+                margin-right: 3.2%;
+                padding-left: 23px;
+                .btn {
+                    margin-left: 0;
+                    margin-top: 14px;
+                    width: 100%;
+                    &:first-child {
+                        margin-top: 16px;
+                    }
+                    .text {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

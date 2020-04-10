@@ -1,0 +1,155 @@
+$font-normal: 'Chakra Petch', sans-serif;
+$mobile-break: 767px;
+/* Estilos comunes a los dos themes */
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: $font-normal;
+}
+
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 14px;
+    line-height: 18px;
+    color: #110038;
+    letter-spacing: 0;
+    a {
+        text-decoration: none;
+    }
+    select {
+        font-size: 16px;
+        line-height: 18px;
+        letter-spacing: 0;
+        text-align: center;
+        padding: 9px 26.5px;
+    }
+    header {
+        padding: 3px 0 3px 7px;
+        font-size: 12px;
+        line-height: 16px;
+    }
+    nav {
+        padding: 0 100px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 35px;
+        .arrow-back {
+            background: url('../assets/images/arrow.svg') top center no-repeat;
+            width: 24px;
+            height: 26px;
+            margin-right: 7px;
+        }
+        .options {
+            margin-left: auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            .menu-changer {
+                position: relative;
+                .menu-list {
+                    display: none;
+                    position: absolute;
+                    z-index: 10;
+                    margin-left: 16px;
+                    padding: 10px;
+                    .btn {
+                        margin: 0;
+                        width: 100%;
+                        margin-bottom: 10px;
+                        padding: 7px 16px;
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 2px;
+        p {
+            font-weight: 700;
+            width: 100%;
+        }
+    }
+    .underline {
+        border: 1px solid transparent;
+    }
+    .hidden {
+        display: none !important;
+    }
+    .btn {
+        display: inline-block;
+        padding: 2px;
+        margin-left: 16px;
+        font-size: 16px;
+        line-height: 18px;
+        letter-spacing: 0;
+        text-align: center;
+        outline: 0;
+        &.btn-link {
+            border: 1px dotted transparent;
+        }
+        .text {
+            white-space: nowrap;
+            display: inline-block;
+            padding: 5px 23px;
+            border: 1px dotted transparent;
+        }
+        &.btn-dropdown {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            &::after {
+                padding: 13px 14px;
+                align-self: stretch;
+                margin-top: -3px;
+                margin-bottom: -3px;
+                margin-right: -3px;
+                background-repeat: no-repeat;
+                background-position: center;
+                content: "";
+                border: 1px dotted transparent;
+                margin-left: 1px;
+            }
+        }
+    }
+    .main-container {
+        padding: 0 100px;
+    }
+}
+
+@media screen and (max-width: $mobile-break) {
+    body {
+        nav {
+            flex-direction: column;
+            padding: 0 16px;
+            .options {
+                flex-direction: column;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-left: 0;
+                .btn,
+                .btn-link {
+                    margin-top: 10px;
+                }
+            }
+        }
+        .main-container {
+            padding: 0 16px;
+        }
+    }
+}

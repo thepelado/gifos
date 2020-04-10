@@ -1,0 +1,86 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Cristian Brunacci">
+    <meta
+        name="description"
+        content="Proyecto GifOS para la carrera de desarrollo web full stack">
+    <link href="https://fonts.googleapis.com/css?family=Chakra+Petch&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="./home.css">
+    <title>Acamica - GifOS</title>
+</head>
+<body>
+    <header class="gradient" id="contador-visitas">
+        ¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número de visitas: 
+    </header>
+    <nav>
+        <div class="logo"></div>
+        <div class="options">
+            <button class="btn btn-primary" id="btn-create-gif">
+                <span class="text">Crear Guifos</span>
+            </button>
+            <div class="menu-changer" id="theme-dropdown">
+                <button class="btn btn-primary btn-dropdown" id="btn-select-theme">
+                    <span class="text">Elegir Tema</span>
+                </button>
+                <div class="menu-list container">
+                    <button class="btn btn-theme active" id="theme-day">
+                        <span class="underline">S</span>ailor day
+                    </button>
+                    <button class="btn btn-theme" id="theme-night">
+                        <span class="underline">S</span>ailor night</span>
+                    </button>
+                </div>
+            </div>
+            <button class="btn btn-link" id="btn-mis-gifos">
+                <span class="underline">M</span>is Guifos
+            </button>
+        </div>
+    </nav>
+    <div class="main-container">
+        <section class="buscar">
+            <div class="container">
+                <p class="gradient">Buscar</p>
+                <form name="buscador" action="">
+                    <input name="txt-buscar" id="txt-buscar" class="shadow" type="text" placeholder="Busca gifs, hashtags, temas, busca lo que quieras…">
+                    <button name="btn-buscar" id="btn-buscar" type="button" class="btn btn-primary btn-buscar">
+                        <i class="lupa"></i>
+                        <span class="text">                            
+                            Buscar
+                        </span>
+                    </button>
+                </form>
+            </div>
+            <div class="lista-sugerencias">
+                <div class="container" id="lista-sugerencias">                    
+                </div>
+            </div>
+            <div class="lista-btn-sugerencias" id="lista-btn-sugerencias">                
+            </div>
+        </section>
+        <section class="resultado busqueda hidden" id="section-resultados-busqueda">            
+            <div class="titulo" id="criterio-busqueda"></div>
+            <div class="resultado-busqueda" id="resultado-busqueda"></div>
+        </section>
+        <section class="resultado sugerencias">
+            <div class="titulo">
+                Hoy te sugerimos:
+            </div>
+            <div class="resultado-sugeridos" id="resultado-random">
+            </div>
+        </section>
+        <section class="resultado tendencias">
+            <div class="titulo">
+                Tendencias:
+            </div>
+            <div class="resultado-tendencias" id="resultado-tendencias">
+            </div>
+        </section>
+    </div>
+    <script src="../js/common.js"></script>
+    <script src="./home.js"></script>
+</body>
+</html>

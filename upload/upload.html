@@ -1,0 +1,164 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Cristian Brunacci">
+    <meta
+        name="description"
+        content="Proyecto GifOS para la carrera de desarrollo web full stack">
+    <link href="https://fonts.googleapis.com/css?family=Chakra+Petch&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="./upload.css">
+    <title>Capturar - GifOS</title>
+</head>
+<body>
+    <header class="gradient" id="contador-visitas">
+        ¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número de visitas: 
+    </header>
+    <nav>
+        <a href="../index.html"><div class="arrow-back" id="arrow-back"></div></a>
+        <div class="logo"></div>
+    </nav>
+    <div class="main-container">
+        <section class="upload-gif" id="primer-paso">
+            <div class="container">
+                <div class="gradient">
+                    <p>Crear Guifos</p>
+                </div>
+                <div class="informacion">
+                    <img src="../assets/images/window_img.png" class="icono" alt="icono">
+                    <div class="texto">
+                        <h2>Aquí podrás crear tus propios guifos</h2>
+                        Crear tu <strong>guifo</strong> es muy fácil, graba cualquier imagen con tu cámara y obtén guifos personalizados. Los pasos para crear tu guifo son:
+                        <ol>
+                            <li>Dar permisos de acceso a la cámara (sólo por el tiempo de uso)</li>
+                            <li>Capturar tu momento guifo</li>
+                            <li>Revisar el momento</li>
+                            <li>Listo para subir y compartir!</li>
+                        </ol>
+                        ¿Quieres comenzar a crear tu <strong>guifo</strong> ahora?
+                    </div>
+                </div>
+                <div class="opciones">
+                    <button class="btn btn-secondary" id="btn-cancelar">
+                        <span class="text">Cancelar</span>
+                    </button>
+                    <button class="btn btn-primary" id="btn-comenzar">
+                        <span class="text">Comenzar</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <section class="upload-gif hidden" id="segundo-paso">
+            <div class="container">
+                <div class="gradient">
+                    <p id="titulo-segundo-paso">Un Chequeo Antes de Empezar</p>
+                    <img class="btn-cerrar" onclick="cancelarProceso();" src="../assets/images/close.svg" alt="#">
+                </div>
+                <div class="video-container">
+                    <video id="video" class="video" autoplay=""></video>
+                </div>
+                <div class="opciones-video">
+                    <div class="tiempo shadow hidden" id="tiempo"></div>
+                    <button class="btn btn-primary btn-grabar-comenzar" id="btn-grabar-comenzar">
+                        <span class="text">Capturar</span>
+                    </button>                                      
+                    <button class="btn btn-primary btn-grabar-finalizar hidden" id="btn-grabar-finalizar">
+                        <span class="text">Listo</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <section class="upload-gif hidden" id="tercer-paso">
+            <div class="container">
+                <div class="gradient">
+                    <p>Una Vista Previa</p>
+                    <img class="btn-cerrar" onclick="cancelarProceso();" src="../assets/images/close.svg" alt="#">
+                </div>
+                <div class="video-container">
+                    <img id="video-preview" class="video" alt="GifOS Preview" title="GifOS Preview">                    
+                </div>
+                <div class="opciones-video">
+                    <div class="tiempo shadow" id="tiempo-preview"></div>
+                    <button class="btn btn-secondary" id="btn-repetir-captura">
+                        <span class="text">Repetir Captura</span>
+                    </button>                                      
+                    <button class="btn btn-primary" id="btn-subir-gifo">
+                        <span class="text">Subir Guifo</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <section class="upload-gif hidden" id="cuarto-paso">
+            <div class="container">
+                <div class="gradient">
+                    <p>Subiendo Guifo</p>
+                    <img class="btn-cerrar" onclick="cancelarProceso();" src="../assets/images/close.svg" alt="#">
+                </div>
+                <div class="cuerpo">
+                    <div class="uploader">
+                        <img src="../assets/images/globe_img.png" alt="Subiendo Gifo">
+                        <div class="texto">
+                            <h2>Estamos subiendo tu guifo…</h2>
+                            <ul class="barra" id="barra-upload">
+                                <li class="carga"></li>
+                                <li class="carga"></li>
+                                <li class="carga"></li>
+                                <li class="carga"></li>
+                                <li class="carga"></li>
+                                <li class="carga"></li>
+                                <li class="carga"></li>
+                                <li class="carga"></li>
+                                <li class="carga"></li>
+                                <li class="carga"></li>
+                                <li class="carga"></li>
+                                <li class="carga"></li>
+                                <li class="carga"></li>
+                                <li class="carga"></li>
+                                <li class="carga"></li>
+                                <li class="carga"></li>
+                                <li class="carga"></li>
+                                <li class="carga"></li>
+                                <li class="carga"></li>
+                                <li class="carga"></li>
+                                <li class="carga"></li>
+                                <li class="carga"></li>
+                                <li class="carga"></li>
+                                <li class="carga"></li>
+                            </ul>
+                            <p>Tiempo restante: <span class="tachado">38 años</span> algunos minutos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="upload-gif hidden" id="quinto-paso">
+            <div class="container">
+                <div class="gradient">
+                    <p>Guifo Subido Con Éxito</p>
+                    <img class="btn-cerrar" onclick="cancelarProceso();" src="../assets/images/close.svg" alt="#">
+                </div>
+                <div class="resultado-upload">
+                    <div class="video-container">
+                        <img id="upload-result" class="video" alt="GifOS Upload Result" title="GifOS Upload Result">                    
+                    </div>
+                    <div class="opciones-descarga">
+                        <h2>Guifo creado con éxito</h2>
+                        <button class="btn btn-secondary" id="btn-copiar-enlace">
+                            <span class="text">Copiar Enlace Guifo</span>
+                        </button>                                      
+                        <button class="btn btn-secondary" id="btn-descargar-gifo">
+                            <span class="text">Descargar Guifo</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="./upload.js"></script>
+</body>
+</html>

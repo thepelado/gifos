@@ -1,0 +1,118 @@
+.buscar {
+    margin-top: 54px;
+    position: relative;
+    p {
+        padding: 7px 0 7px 7px;
+    }
+    form {
+        padding: 12px 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        input[type=text] {
+            width: 100%;
+            padding: 11px 16px;
+            font-size: 16px;
+            line-height: 22px;
+        }
+        .btn {
+            margin-left: 8px;
+            border-color: #808080;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start; 
+            .text {
+                padding: 0;
+                padding-right: 11px;
+               
+            }
+            .lupa {
+                width: 16px;
+                height: 16px;
+                margin: 7px 10px 7px 7px;
+            }
+            &:disabled {
+                .lupa {
+                    background: url('../assets/images/lupa_inactive.svg') center center no-repeat;
+                }
+            }
+        }
+    }
+    .container {
+        align-items: stretch;
+    }
+    .lista-sugerencias {
+        position: absolute;
+        left: 0;
+        top: 106px;
+        width: 100%;
+        z-index: 10;
+        .container {
+            padding: 0 128px 0 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            .sugerencia {
+                padding: 5px 0 5px;
+                width: 100%;
+                &:first-child {
+                    padding-top: 16px;
+                }
+                &:last-child {
+                    padding-bottom: 16px;
+                }
+                .btn {
+                    margin: 0;
+                    width: 100%;
+                    text-align: left;
+                    span {
+                        padding: 6px 15px;
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+    .lista-btn-sugerencias {
+        margin-top: 12px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        .btn {
+            margin-left: 0;
+            margin-right: 8px;
+            .text {
+                padding: 8px 12px 8px 7px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $mobile-break) {
+    .buscar {
+        padding: 0;
+        .lista-sugerencias {
+            .container {
+                padding: 0 15px;
+            }
+        }
+        .lista-btn-sugerencias {
+            flex-wrap: wrap;
+            align-items: flex-start;
+            .btn {
+                margin-bottom: 10px;
+            }
+        }
+        form {
+            .btn {
+                .text {
+                    display: none;
+                }
+            }
+        }
+    }
+}

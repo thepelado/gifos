@@ -1,0 +1,57 @@
+.tendencias {
+    margin-top: 64px;
+    .titulo {
+        padding: 7px;
+    }
+    .resultado-tendencias {
+        margin-top: 16px;
+        display: grid;
+        grid-gap: 16px;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-flow: dense;
+        .tendencia {
+            position: relative;
+            width: 100%;
+            height: auto;
+            padding:2px;
+            &.doble {
+                grid-column: span 2; 
+            }
+            .container {
+                padding: 0;
+                border: 1px solid transparent; 
+            }
+            img {
+                height: 298px;
+                width: 100%;
+            }
+            .footer {
+                display: none;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                color: #FFF;
+                font-weight: 700;
+            }
+            &:hover {
+                .footer {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $mobile-break) {
+    .tendencias {
+        .resultado-tendencias {
+            grid-template-columns: repeat(1, 1fr);
+            grid-gap: 0 0 16px 0;
+            .tendencia {
+                &.doble {
+                    grid-column: unset;
+                }
+            }
+        }
+    }
+}
