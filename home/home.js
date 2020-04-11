@@ -153,9 +153,14 @@ function insertTrendingResults(array) {
         let clase_doble = '';
         if (contDobles < 4 && (array[i].images.original.width >= (array[i].images.original.height * 1.4)))
         {
-            clase_doble = "doble";
-            contDobles++;
-            cont+=2;
+            if (cont + 2 <= cantidadTendencia) {
+                clase_doble = "doble";
+                contDobles++;
+                cont+=2;
+            }
+            else {
+                cont++;
+            }
         }
         else {
             cont++;
