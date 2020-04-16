@@ -9,13 +9,15 @@ var videoPreview = document.getElementById("video-preview");
 var btnGrabar = document.getElementById("btn-grabar-comenzar");
 var btnFinalizar = document.getElementById("btn-grabar-finalizar");
 var tiempo = document.getElementById("tiempo");
+var btnPlayPreview = document.getElementById("btn-play-preview");
 var tiempoPreview = document.getElementById("tiempo-preview");
 var btnRepetirProceso = document.getElementById("btn-repetir-captura");
 var btnSubirGifOs = document.getElementById("btn-subir-gifo");
 var btnDescargarGifOs = document.getElementById("btn-descargar-gifo");
 var btnCopiarGifOs = document.getElementById("btn-descargar-gifo");
 
-var grabacion;
+var gifStream;
+var videoStream;
 var miCamara;
 var horaDeInicio;
 var horaDeFin;
@@ -59,8 +61,8 @@ function cancelarProceso() {
     btnFinalizar.classList.add("hidden");
     tiempo.classList.add("hidden");
     document.getElementById("segundo-paso").classList.add("hidden");
-    //
     document.getElementById("tercer-paso").classList.add("hidden");
+    document.getElementById("cuarto-paso").classList.add("hidden");
     //
     document.getElementById("primer-paso").classList.remove("hidden");
 }
@@ -97,27 +99,21 @@ btnGrabar.addEventListener("click", () => {
     document.getElementById("titulo-segundo-paso").innerHTML = "Capturando Tu Guifo";
     
     /* Creo el elemento que va a guardar la grabacion */
-    grabacion = crearGrabador(miCamara);
-    grabacion.startRecording(); //uso la funcion de la libreria
+    videoStream = new RecordRTCPromisesHandler(miCamara, {
+        type: "video"
+    });
+    gifStream = new RecordRTCPromisesHandler(miCamara, {
+        type: "gif"
+    });
+    gifStream.startRecording(); //uso la funcion de la libreria
+    videoStream.startRecording(); //uso la funcion de la libreria
     horaDeInicio = new Date().getTime();//defino el momento en que comence a grabar
     calcularTiempoGrabacion();
-})
-
-function crearGrabador(transmision) {
-    return RecordRTC(transmision, {
-        disableLogs: true, //tiene logs automaticos
-        type: "gif",
-        frameRate: 1,
-        quality: 10,
-        width: 360,
-        hidden: 240,
-        timeSlice: 1000,
-    });
-}
+});
 
 function calcularTiempoGrabacion() {
     //Si no estoy grabando nada...me voy
-    if (!grabacion) {
+    if (!gifStream) {
         return;
     }
     tiempo.innerText = calcularDuracion((new Date().getTime() - horaDeInicio) / 1000);
@@ -153,7 +149,7 @@ btnRepetirProceso.addEventListener("click", () => {
 /* Finalizar Grabacion */
 btnFinalizar.addEventListener("click", terminarGrabacion);
 
-function terminarGrabacion() {
+async function terminarGrabacion() {
 
     //Oculto el segundo paso
     document.getElementById("segundo-paso").classList.add("hidden");
@@ -161,20 +157,47 @@ function terminarGrabacion() {
     document.getElementById("tercer-paso").classList.remove("hidden");
 
     horaDeFin = new Date().getTime();
-    grabacion.stopRecording(() => {
-        blob = grabacion.getBlob(); //Guardo los datos planos para subirlos a futuro        
-        videoPreview.src = grabacion.toURL(); //muestro en un elemento video el resultado
+    //
+    videoPreview.srcObject = null;
+    await videoStream.stopRecording();
+    await gifStream.stopRecording();
 
-        //reseteo el elemento que graba
-        grabacion.destroy();
-        grabacion = null;
+    videoBlob = await videoStream.getBlob();
+    blob = await gifStream.getBlob();   
+    videoPreview.src = URL.createObjectURL(videoBlob);
+    tiempoPreview.innerHTML = calcularDuracion(0);
 
-        //Libero la camara
-        miCamara.getTracks().forEach(function(track) {
-            track.stop();
-        });
+    //reseteo el elemento que graba
+    gifStream.destroy();
+    gifStream = null;
+    videoStream.destroy();
+    videoStream = null;
+
+    //Libero la camara
+    miCamara.getTracks().forEach(function(track) {
+        track.stop();
     });
+   
 }
+
+/* Play Preview */
+btnPlayPreview.addEventListener("click", () => {
+    videoPreview.play();
+
+    //Pongo el tiempo del video en el elemento
+    videoPreview.ontimeupdate = () => {
+        tiempoPreview.innerHTML = calcularDuracion(videoPreview.currentTime);
+        //Me quedo con un digito solamente del % de subida para hacer equivalencia con mi barra
+        var complete = (videoPreview.currentTime / videoPreview.duration * 100 | 0);
+        pintarBarra(complete, 17, document.getElementById("barra-preview"));
+    };
+
+    videoPreview.onended = () => {
+        console.log('termino');
+        resetBarra(document.getElementById("barra-preview"));
+        tiempoPreview.innerHTML = calcularDuracion(0);
+      };
+});
 
 /* Subir gif */
 btnSubirGifOs.addEventListener("click", subirGif);
@@ -201,7 +224,7 @@ function subirGif() {
         if (event.lengthComputable) {
             //Me quedo con un digito solamente del % de subida para hacer equivalencia con mi barra
             var complete = (event.loaded / event.total * 100 | 0);
-            pintarBarra(complete);
+            pintarBarra(complete, 24, document.getElementById("barra-upload"));
         }
     });
     
@@ -213,9 +236,13 @@ function subirGif() {
             alert(`Error ${xhr.status}: ${xhr.statusText}`); // e.g. 404: Not Found
         } else { // show the result
             let id = xhr.response.data.id;
-            document.getElementById("cuarto-paso").classList.add("hidden");
-            document.getElementById("quinto-paso").classList.remove("hidden");
-            guandarGifEnLocalStorage(id);
+            console.log(xhr.response.data);
+            debugger;
+            if (id) {
+                guandarGifEnLocalStorage(id);
+                document.getElementById("cuarto-paso").classList.add("hidden");
+                document.getElementById("quinto-paso").classList.remove("hidden");              
+            }
         }
     };
 
@@ -224,16 +251,25 @@ function subirGif() {
     };
 }
 
-function pintarBarra(porcentaje) {
-    let barra = document.getElementById("barra-upload");
+function pintarBarra(porcentaje, cantCuadraditos, elemento) {
+    let barra = elemento;
     let items = barra.getElementsByTagName("li");
     //Son 24 cuadraditos, asi que hago la equivalencia
-    porcentaje = Math.ceil((porcentaje * 24) /100);
+    porcentaje = Math.ceil((porcentaje * cantCuadraditos) /100);
     for (let i = 0; i < porcentaje; ++i) {
         if (!items[i].classList.contains("completa"))
         {
             items[i].classList.add("completa");
         }
+    }
+}
+
+function resetBarra(elemento) {
+    debugger;
+    let barra = elemento;
+    let items = barra.getElementsByTagName("li");
+    for (let i = 0; i < items.length; ++i) {
+        items[i].classList.remove("completa");
     }
 }
 
@@ -244,7 +280,7 @@ function guandarGifEnLocalStorage(id) {
         return response.json();
     })
     .then(dataGif => {
-        let url = dataGif.data.images.downsized.url
+        let url = dataGif.data.images.original.url;
         document.getElementById("upload-result").src = url;
         
         //guardar en elnace en el boton 

@@ -251,6 +251,23 @@ body .main-container {
   body .upload-gif .container .opciones-video .btn .text {
     padding: 6px 15px;
   }
+  body .upload-gif .container .resultado-upload {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 5px;
+  }
+  body .upload-gif .container .resultado-upload .video-container {
+    width: 100%;
+    margin-bottom: 0;
+  }
+  body .upload-gif .container .resultado-upload .opciones-descarga {
+    margin-top: 10px;
+    margin-right: 0;
+    padding-left: 0;
+    margin-bottom: 10px;
+  }
 }
 
 .day {
@@ -394,6 +411,17 @@ body .main-container {
 .day .btn.btn-dropdown:hover::after {
   outline: 1.4px dotted #110038;
   outline-offset: -4px;
+}
+
+.day .btn.btn-play {
+  margin-right: 4px;
+}
+
+.day .btn.btn-play .icono {
+  background: url(../assets/images/forward.svg) center center no-repeat;
+  padding: 5px 8px;
+  width: 6px;
+  height: 10px;
 }
 
 .day .btn.btn-link {

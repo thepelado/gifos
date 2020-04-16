@@ -133,8 +133,10 @@ body {
 }
 
 @media screen and (max-width: $mobile-break) {
-    body {
-        nav {
+    body 
+    {
+        nav 
+        {
             flex-direction: column;
             padding: 0 16px;
             .arrow-back {
@@ -154,7 +156,8 @@ body {
         .main-container {
             padding: 0 16px;
         }
-        .upload-gif {
+        .upload-gif 
+        {
             padding: 75px 0px 75px 0px;
             width: 100%;
             .container {
@@ -194,6 +197,7 @@ body {
                         padding-left: 0;
                         margin-bottom: 10px;
                     }
+                }
             }
         }
     }

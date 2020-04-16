@@ -178,8 +178,31 @@
   margin-bottom: 13px;
 }
 
+.upload-gif .container .opciones-video .controles-video {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.upload-gif .container .opciones-video .controles-video .barra {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-top: 0;
+}
+
 .upload-gif .container .opciones-video .btn .text {
-  padding: 6px 39.5px;
+  padding: 6px 9px;
 }
 
 .upload-gif .container .opciones-video .btn.btn-grabar-comenzar, .upload-gif .container .opciones-video .btn.btn-grabar-finalizar {
@@ -198,6 +221,10 @@
           justify-content: flex-start;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+.upload-gif .container .opciones-video .btn.btn-grabar-comenzar .text, .upload-gif .container .opciones-video .btn.btn-grabar-finalizar .text {
+  padding: 6px 39.5px;
 }
 
 .upload-gif .container .opciones-video .btn.btn-grabar-comenzar::before, .upload-gif .container .opciones-video .btn.btn-grabar-finalizar::before {
@@ -220,6 +247,45 @@
   padding: 7px 13px 7px 21px;
   width: 124px;
   text-align: right;
+}
+
+.upload-gif .container .barra {
+  margin-top: 39px;
+  background: #B4B4B4;
+  -webkit-box-shadow: inset 2px 2px 0 0 #000000, inset -2px -2px 0 0 #FFFCFC;
+          box-shadow: inset 2px 2px 0 0 #000000, inset -2px -2px 0 0 #FFFCFC;
+  width: auto;
+  height: 24px;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.upload-gif .container .barra .carga {
+  background: #999999;
+  margin-right: 2px;
+  width: 12px;
+  height: 20px;
+}
+
+.upload-gif .container .barra .carga.completa {
+  background: #F7C9F3;
+}
+
+.upload-gif .container .barra .carga:last-child {
+  margin-right: 0;
 }
 
 .upload-gif .container .uploader {
@@ -259,46 +325,6 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-}
-
-.upload-gif .container .uploader .texto .barra {
-  margin-top: 39px;
-  background: #B4B4B4;
-  -webkit-box-shadow: inset 2px 2px 0 0 #000000, inset -2px -2px 0 0 #FFFCFC;
-          box-shadow: inset 2px 2px 0 0 #000000, inset -2px -2px 0 0 #FFFCFC;
-  width: 100%;
-  height: 24px;
-  list-style: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 2px;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  width: 324px;
-}
-
-.upload-gif .container .uploader .texto .barra .carga {
-  background: #999999;
-  margin-right: 2px;
-  width: 12px;
-  height: 20px;
-}
-
-.upload-gif .container .uploader .texto .barra .carga.completa {
-  background: #F7C9F3;
-}
-
-.upload-gif .container .uploader .texto .barra .carga:last-child {
-  margin-right: 0;
 }
 
 .upload-gif .container .uploader .texto p {

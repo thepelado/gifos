@@ -105,9 +105,19 @@
             width: 100%;
             padding-right: 13px;
             margin-bottom: 13px;
+            .controles-video {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: flex-start;
+                .barra {
+                    align-items: flex-start;
+                    margin-top: 0;
+                }
+            }
             .btn {
                 .text {
-                    padding: 6px 39.5px;
+                    padding: 6px 9px;
                 }
                 &.btn-grabar-comenzar,
                 &.btn-grabar-finalizar {
@@ -116,6 +126,9 @@
                     align-items: center;
                     justify-content: flex-start;
                     flex-wrap: wrap;
+                    .text {
+                        padding: 6px 39.5px;
+                    }
                     &::before {
                         padding: 17px 22px;
                         align-self: stretch;
@@ -137,6 +150,31 @@
                 text-align: right;
             }
         }
+        .barra {
+            margin-top: 39px;
+            background: #B4B4B4;
+            box-shadow: inset 2px 2px 0 0 #000000, inset -2px -2px 0 0 #FFFCFC;
+            width: auto;
+            height: 24px;
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 2px;
+            justify-content: flex-start;
+            .carga {
+                background: #999999;
+                margin-right: 2px;
+                width: 12px;
+                height: 20px;
+                &.completa {
+                    background: #F7C9F3;
+                }
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
         .uploader {
             display: flex;
             flex-direction: column;
@@ -153,32 +191,6 @@
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                .barra {
-                    margin-top: 39px;
-                    background: #B4B4B4;
-                    box-shadow: inset 2px 2px 0 0 #000000, inset -2px -2px 0 0 #FFFCFC;
-                    width: 100%;
-                    height: 24px;
-                    list-style: none;
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    padding: 2px;
-                    justify-content: flex-start;
-                    width: 324px;
-                    .carga {
-                        background: #999999;
-                        margin-right: 2px;
-                        width: 12px;
-                        height: 20px;
-                        &.completa {
-                            background: #F7C9F3;
-                        }
-                        &:last-child {
-                            margin-right: 0;
-                        }
-                    }
-                }
                 p {
                     margin-top: 8px;
                     font-size: 12px;
