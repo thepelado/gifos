@@ -753,6 +753,17 @@ body .main-container {
   outline-offset: -4px;
 }
 
+.night .btn.btn-play {
+  margin-right: 4px;
+}
+
+.night .btn.btn-play .icono {
+  background: url(../assets/images/forward.svg) center center no-repeat;
+  padding: 5px 8px;
+  width: 6px;
+  height: 10px;
+}
+
 .night .btn.btn-link {
   background-color: unset;
   color: #FFF;

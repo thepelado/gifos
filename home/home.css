@@ -221,10 +221,8 @@
 
 @media screen and (max-width: 767px) {
   .busqueda .resultado-busqueda {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
   }
 }
 

@@ -45,7 +45,7 @@
 @media screen and (max-width: $mobile-break) {
     .busqueda {
         .resultado-busqueda {
-            flex-direction: column;
+            grid-template-columns: repeat(1, 1fr);
         }
     }
 }

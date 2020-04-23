@@ -181,17 +181,23 @@ function insertTrendingResults(array) {
 inputBusqueda.addEventListener("input", () => {
     let valor = inputBusqueda.value.trim();
 
-    if (valor) {
+    if (valor.length > 0) {
         document.getElementById("btn-buscar").disabled = false;
         //muestro el boton eliminar ???
         obtenerSugerencias(valor, 'actualizarSugerencias');
 
     } else {
+        console.log("Vacio");
         document.getElementById("btn-buscar").disabled = true;
         //escondo el boton eliminar ???
-        //Escondo el div de sugerencias
-        let container = document.getElementById("lista-sugerencias");
-        container.innerHTML = "";
+        //Oculto busqueda
+        document.getElementById("section-resultados-busqueda").classList.add("hidden");
+        //Blanqueo la lista de sugerencias y los botones        
+        document.getElementById("lista-sugerencias").innerHTML = "";
+        document.getElementById("lista-btn-sugerencias").innerHTML = "";
+        //Muestro sugerencias y tendencias
+        document.getElementById("section-sugerencias").classList.remove("hidden");
+        document.getElementById("section-tendencias").classList.remove("hidden");
     }
 });
 
@@ -267,6 +273,10 @@ function getSearchResults(search) {
 
     //Realizo la busqueda
     getSearch(search).then( respuesta => {
+        //Oculto tendencias y sugerencias
+        document.getElementById("section-sugerencias").classList.add("hidden");
+        document.getElementById("section-tendencias").classList.add("hidden");
+        //Inserto los resultados
         insertSearchResults(search, respuesta);
     });
 

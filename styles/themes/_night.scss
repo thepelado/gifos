@@ -226,6 +226,15 @@ $btn-grabar-finalizar: (
                 }
             }
         }
+        &.btn-play {
+            margin-right: 4px;
+            .icono {
+                background: url(../assets/images/forward.svg) center center no-repeat;
+                padding: 5px 8px;
+                width: 6px;
+                height: 10px;
+            }
+        }
         &.btn-link {
             background-color: unset;
             color: map-get($btn-link, color );
