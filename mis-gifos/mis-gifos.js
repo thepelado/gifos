@@ -1,6 +1,9 @@
 var misGifOs = [];
 
 window.onload = function() {
+    //Registro Visita
+    visitCounter();
+
     //Fijo el theme seleccionado
     if (localStorage.getItem("theme")) //Si hay theme
     {

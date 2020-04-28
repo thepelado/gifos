@@ -119,7 +119,7 @@
   display: block;
 }
 
-.buscar .lista-btn-sugerencias {
+.buscar .lista-btn-historial {
   margin-top: 12px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -134,14 +134,15 @@
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  overflow: hidden;
 }
 
-.buscar .lista-btn-sugerencias .btn {
+.buscar .lista-btn-historial .btn {
   margin-left: 0;
   margin-right: 8px;
 }
 
-.buscar .lista-btn-sugerencias .btn .text {
+.buscar .lista-btn-historial .btn .text {
   padding: 8px 12px 8px 7px;
 }
 
@@ -152,14 +153,14 @@
   .buscar .lista-sugerencias .container {
     padding: 0 15px;
   }
-  .buscar .lista-btn-sugerencias {
+  .buscar .lista-btn-historial {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start;
   }
-  .buscar .lista-btn-sugerencias .btn {
+  .buscar .lista-btn-historial .btn {
     margin-bottom: 10px;
   }
   .buscar form .btn .text {

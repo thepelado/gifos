@@ -2,7 +2,7 @@
 const searchEndpoint = 'https://api.giphy.com/v1/gifs/search?q=';
 const trendingEndpoint = 'https://api.giphy.com/v1/gifs/trending';
 const randomEndpoint = 'https://api.giphy.com/v1/gifs/random';
-const suggestionsURL = 'https://api.giphy.com/v1/tags/related';
+const sugerenciasURL = 'https://suggestqueries.google.com/complete/search?output=firefox';
 const cantOpcionesSugeredias = 3;
 
 var inputBusqueda = document.getElementById("txt-buscar");
@@ -55,9 +55,6 @@ window.onload = function() {
         .catch(error => {
             console.log(error);
         });
-
-    //Muestro el historial de las busquedas
-    updateSearchHistory();
 };
 
 /* Search button event assing */
@@ -204,8 +201,7 @@ inputBusqueda.addEventListener("input", () => {
     if (valor.length > 0) {
         document.getElementById("btn-buscar").disabled = false;
         //muestro el boton eliminar ???
-        getSuggestions(valor)
-            .then( respuesta => updateSuggestions(respuesta));
+        getSuggestions(valor, 'updateSuggestions');
 
     } else {
         console.log("Vacio");
@@ -222,24 +218,35 @@ inputBusqueda.addEventListener("input", () => {
     }
 });
 
-function getSuggestions(palabra) {
+function getSuggestions(palabra, callback) {
+    console.log("haciendo la consulta");
+    //creo la URL para la consulta
+    let url = sugerenciasURL + '&q=' + palabra + "&callback=" + callback;
+    //llamo la funcion que me actualiza el scrip
+    updateScript(url);
+}
 
-    const found = fetch(suggestionsURL + '/' + palabra + '?api_key=' + apiKey)
-        .then(response => {
-            return response.json();
-        })
-        .then(resultado => {
-            return resultado.data;
-        })
-        .catch(error => {
-            return error;
-        });
-    return found;
+function updateScript(url) {
+
+    let nuevoScript = document.createElement("script");
+
+    nuevoScript.setAttribute("src", url);
+    nuevoScript.setAttribute("id", "jsonp");
+
+    let viejoScript = document.getElementById("jsonp");
+
+    let body = document.getElementsByTagName("body")[0];
+
+    if (viejoScript == null) {
+        body.appendChild(nuevoScript);
+    } else {
+        body.replaceChild(nuevoScript, viejoScript);
+    }
 }
 
 function updateSuggestions(obj) {
 
-    let resultado = obj.slice(0, cantSugerencias-1);
+    let resultado = obj[1].slice(0, cantSugerencias-1);
     //Borro si tiene contenido y la muestro
     let container = document.getElementById("lista-sugerencias");
     container.innerHTML = "";
@@ -251,8 +258,8 @@ function updateSuggestions(obj) {
         //Maqueto el contenido
         let contenido = document.createElement("div");
         contenido.setAttribute("class", "sugerencia");
-        contenido.innerHTML = '<button name="btn-opt-sugerido" type="button" class="btn btn-sugerido" onClick="getSearchResults(\''+resultado[i].name+'\')">' +
-                            '<span>'+ resultado[i].name +'</span>' +
+        contenido.innerHTML = '<button name="btn-opt-sugerido" type="button" class="btn btn-sugerido" onClick="getSearchResults(\''+resultado[i]+'\')">' +
+                            '<span>'+ resultado[i] +'</span>' +
                             '</button>';
         container.appendChild(contenido);
     }
@@ -282,65 +289,41 @@ function getSearchResults(search) {
     btnBuscar.disabled = false;
 
     //Realizo la busqueda
-    getSearch(search)
-        .then( respuesta => {
-            //Oculto tendencias y sugerencias
-            document.getElementById("section-sugerencias").classList.add("hidden");
-            document.getElementById("section-tendencias").classList.add("hidden");
-            //Inserto los resultados
-            insertSearchResults(search, respuesta);
-            //Limpio las sugerencias
-            let container = document.getElementById("lista-sugerencias");
-            container.innerHTML = "";
-            return respuesta;
-        })
-        .then (respuesta => {
-            saveSearch(search, respuesta);
-        });
+    getSearch(search).then( respuesta => {
+        //Oculto tendencias y sugerencias
+        document.getElementById("section-sugerencias").classList.add("hidden");
+        document.getElementById("section-tendencias").classList.add("hidden");
+        //Inserto los resultados
+        insertSearchResults(search, respuesta);
+    });
+
+    //Obtengo las sugerencias
+    getSuggestions(search, 'updateBtnSuggestions');
+   
+    //Limpio las sugerencias
+    let container = document.getElementById("lista-sugerencias");
+    container.innerHTML = "";
+
+    insertSearchResults(search, getSearch(search));
 }
 
-function saveSearch(term, searchResult)
-{
-    let newItem = { term, result: searchResult };
-    if (localStorage.getItem("search-results")) //Si hay theme
-    {
-        let searchesHistory = JSON.parse(localStorage.getItem("search-results"));
-        searchesHistory.unshift(newItem);
-        localStorage.setItem("search-results", JSON.stringify(searchesHistory));
-    }
-    else
-    {
-        localStorage.setItem("search-results", JSON.stringify([newItem]));
-    }
-    updateSearchHistory();
-}
-
-function updateSearchHistory() {
-    let searchesHistory = JSON.parse(localStorage.getItem("search-results"));
+function updateBtnSuggestions(obj) {
+    resultado = obj[1].slice(0, cantSugerencias-1);
 
     //Borro si tiene contenido y la muestro
     let container = document.getElementById("lista-btn-historial");
     container.innerHTML = "";
 
     //Armo los botones con las sugerencias
-    for (let i=0; i < searchesHistory.length; i++)
+    for (let i=0; i < resultado.length; i++)
     {
-        let titulo = getTagsForTitle(searchesHistory[i].term);
+        let titulo = getTagsForTitle(resultado[i]);
         //Maqueto el contenido
         let contenido = document.createElement("div");
-        contenido.innerHTML = '<button name="btn-opt-sugerido" type="button" class="btn btn-ver-mas" onClick="getSearchHistoryResults(\''+searchesHistory[i].term+'\')">' +
+        contenido.innerHTML = '<button name="btn-opt-sugerido" type="button" class="btn btn-secondary" onClick="getSearchResults(\''+resultado[i]+'\')">' +
                             '<span class="text">'+ titulo +'</span>' +
                             '</button>';
         container.appendChild(contenido);
-    }
-}
-
-function getSearchHistoryResults(term) {
-
-    let searchesHistory = JSON.parse(localStorage.getItem("search-results"));
-    let historial = searchesHistory.find(query => query.term == term);
-    if (historial) {
-        insertSearchResults(historial.term, historial.result);
     }
 }
 
@@ -368,5 +351,4 @@ function insertSearchResults(criterio, resultado) {
             '</div>';
         container.appendChild(contenido);
     }
-    scrollDown("section-resultados-busqueda");
 }

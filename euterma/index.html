@@ -1,0 +1,750 @@
+<?php
+$version = date('dmYHis');
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"
+    integrity="sha384-REHJTs1r2ErKBuJB0fCK99gCYsVjwxHrSU0N7I1zl9vZbggVJXRMsv/sLlOAGb4M"
+    crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Fugaz+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css?v=<?php echo $version;?>">
+    <title>Solar Plumbers - Shop On-line</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+</head>
+<body>
+    <section class="carousel carousel-home" id="carousel-home">
+        <div id="carouselBannersIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselBannersIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselBannersIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselBannersIndicators" data-slide-to="2"></li>
+              <li data-target="#carouselBannersIndicators" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="./assets/banners/front-3.jpg?v=<?php echo $version;?>" alt="First slide">
+                <div class="carousel-caption">
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="./assets/banners/front-5.jpg?v=<?php echo $version;?>" alt="Second slide">
+                <div class="carousel-caption">
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="./assets/banners/front-1.jpg?v=<?php echo $version;?>" alt="Second slide">
+                <div class="carousel-caption">
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="./assets/banners/front-4.jpg?v=<?php echo $version;?>" alt="Third slide">
+                <div class="carousel-caption"> 
+                </div>
+              </div>
+            </div>
+          </div>
+    </section>
+    <header>
+        <div class="container">
+            <div class="row top-bar d-none d-lg-flex d-xl-flex align-items-strech">
+                <div class="col-12 col-md-6">                    
+                    <img src="./assets/images/solar-plumbers-logo-blanco.svg" class="logo" style="width: 130px;">
+                </div>
+                <div class="col-12 col-md-6 search-box">
+                    <a class="shop" href="#" title="Shop on-line">Shop on-line</a>
+                </div>
+            </div>
+        </div>
+        <div class="menu-container container-fluid">
+            <nav class="navbar navbar-expand-lg bg-dark navbar-dark" id="nav">
+                <a class="navbar-brand d-block d-lg-none col-6" href="#">
+                    <img src="./assets/images/solar-plumbers-logo-blanco.svg" class="logo" style="width: 130px;">
+                </a>
+                <button class="navbar-toggler btn-shop" type="button">
+                    <a class="shop" href="#" title="Shop on-line">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>                    
+                </button>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="productosNavbarDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Productos
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="productosNavbarDropdownMenu">
+                            <a class="dropdown-item" href="#">Rheem Premier Loline 300 litros</a>
+                            <a class="dropdown-item" href="#">Rheem Premier Hiline 52D 300 Litros</a>
+                            <a class="dropdown-item" href="#">Rheem Premier Hiline 52D 180 Litros</a>
+                            <a class="dropdown-item" href="#">Rheem Premier Hiline 52C 180 Litros</a>
+                            <a class="dropdown-item" href="#">Colector Solar Saiar 30 Tubos</a>
+                            <a class="dropdown-item" href="#">Termotanque Solar Presurizado Saiar 200</a>
+                            <a class="dropdown-item" href="#">Termotanques Solares Atmosfericos Saiar 200 - 120 litros</a>
+                            <a class="dropdown-item" href="#">Tanques de Acumulacion Solar</a>
+                            <a class="dropdown-item" href="#">Accesorios Solares</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="casosEstudioNavbarDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Casos de estudio
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="casosEstudioNavbarDropdownMenu">                            
+                            <a class="dropdown-item" href="#">¿Por qué agua caliente solar?</a>
+                            <a class="dropdown-item" href="#">¿Por qué elegirnos?</a>
+                            <a class="dropdown-item" href="#">Ahorro Financiero</a>
+                            <a class="dropdown-item" href="#">Beneficios ambientales</a>
+                            <a class="dropdown-item" href="#">Cómo funciona la energía solar</a>
+                            <a class="dropdown-item" href="#">Calculadora de salida de colector</a>
+                            <a class="dropdown-item" href="#">Guía de dimensionamiento del colector</a>
+                            <a class="dropdown-item" href="#">Guía de instalación del colector</a>
+                            <a class="dropdown-item" href="#">Enviar un proyecto</a>
+                            <a class="dropdown-item" href="#">Fotos de instalación residencial</a>
+                            <a class="dropdown-item" href="#">Estudios de caso</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./canal-profesional/">Canal Profesional</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicios">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contactenos</a>
+                    </li>                            
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section class="productos blanco" id="productos">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="titulo">
+                        <h2>Productos</h2>
+                    </div>
+                    <div class="row productos-container">
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <div class="container producto">
+                                <div class="producto-img">
+                                    <img class="img-fluid" src="assets/images/rheem-loline-300.jpg?v=<?php echo $version;?>" alt="Rheem Premier Loline 300 litros">
+                                </div>
+                                <div class="producto-title">
+                                    <a href="#" target="" title="Rheem Premier Loline 300 litros">Rheem Premier Loline 300 litros</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <div class="container producto">
+                                <div class="producto-img">
+                                    <img class="img-fluid" src="assets/images/rheem-placa-plana.jpg?v=<?php echo $version;?>" alt="Rheem premier hiline 52D 300 Litros">
+                                </div>
+                                <div class="producto-title">
+                                    <a href="#" target="" title="Rheem premier hiline 52D 300 Litros">Rheem Premier Hiline 52D 300 Litros</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <div class="container producto">
+                                <div class="producto-img">
+                                    <img class="img-fluid" src="assets/images/rheem-placa-plana-180-litros.jpg?v=<?php echo $version;?>" alt="Rheem Premier Hiline 52D 180 Litros">
+                                </div>
+                                <div class="producto-title">
+                                    <a href="#" target="" title="Rheem Premier Hiline 52D 180 Litros">Rheem Premier Hiline 52D 180 Litros</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <div class="container producto">
+                                <div class="producto-img">
+                                    <img class="img-fluid" src="assets/images/termotanque-solar-rheem.jpg?v=<?php echo $version;?>" alt="Rheem Premier Hiline 52C 300 Litros">
+                                </div>
+                                <div class="producto-title">
+                                    <a href="#" target="" title="Rheem Premier Hiline 52C 300 Litros">Rheem Premier Hiline 52C 300 Litros</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <div class="container producto">
+                                <div class="producto-img">
+                                    <img class="img-fluid" src="assets/images/colector-saiar.jpg?v=<?php echo $version;?>" alt="Colector Solar Saiar 30 Tubos">
+                                </div>
+                                <div class="producto-title">
+                                    <a href="#" target="" title="Colector Solar Saiar 30 Tubos">Colector Solar Saiar 30 Tubos</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <div class="container producto">
+                                <div class="producto-img">
+                                    <img class="img-fluid" src="assets/images/saiar-presurizado.jpg?v=<?php echo $version;?>" alt="Termotanque Solar Presurizado Saiar 200 ">
+                                </div>
+                                <div class="producto-title">
+                                    <a href="#" target="" title="Termotanque Solar Presurizado Saiar 200 ">Termotanque Solar Presurizado Saiar 200</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <div class="container producto">
+                                <div class="producto-img">
+                                    <img class="img-fluid" src="assets/images/saiar-atmosferico-200.jpg?v=<?php echo $version;?>" alt="Termotanques Solares Atmosfericos Saiar 200 - 120 litros">
+                                </div>
+                                <div class="producto-title">
+                                    <a href="#" target="" title="Termotanques Solares Atmosfericos Saiar 200 - 120 litros">Termotanques Solares Atmosfericos Saiar 200 - 120 litros.</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <div class="container producto">
+                                <div class="producto-img">
+                                    <img class="img-fluid" src="assets/images/saiar-atmosferico-120.jpg?v=<?php echo $version;?>" alt="Termotanque Solar Saiar Atmosférico 120Lts.">
+                                </div>
+                                <div class="producto-title">
+                                    <a href="#" target="" title="Termotanque Solar Saiar Atmosférico 120Lts.">Termotanque Solar Saiar Atmosférico 120Lts.</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- -->
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <div class="container producto">
+                                <div class="producto-img">
+                                    <img class="img-fluid" src="./assets/images/screen-shot-2019-08-22-at-3-35-12-pm-640-640.jpg?v=<?php echo $version;?>" alt="Tanques de Acumulacion Solar">
+                                </div>
+                                <div class="producto-title">
+                                    <a href="#" target="" title="Tanques de Acumulacion Solar">Tanques de Acumulacion Solar</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <div class="container producto">
+                                <div class="producto-img">
+                                    <img class="img-fluid" src="./assets/images/5363-640-640.jpg?v=<?php echo $version;?>" alt="Expansion Tanks">
+                                </div>
+                                <div class="producto-title">
+                                    <a href="#" target="" title="Expansion Tanks">Tanques de expansión</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <div class="container producto">
+                                <div class="producto-img">
+                                    <img class="img-fluid" src="./assets/images/accesorios-solares.jpg?v=<?php echo $version;?>" alt="Accesorios solares">
+                                </div>
+                                <div class="producto-title">
+                                    <a href="#" target="" title="Accesorios solares">Accesorios solares</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <div class="container producto">
+                                <div class="producto-img">
+                                    <img class="img-fluid" src="./assets/images/full-twin-640-640.jpg?v=<?php echo $version;?>" alt="Pump Stations">
+                                </div>
+                                <div class="producto-title">
+                                    <a href="#" target="" title="Pump Stations">Estaciones de bombeo</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 d-flex justify-content-end btn-mas-productos-container">
+                            <a class="btn" href="#" title="Más Productos">Más Productos&nbsp;&nbsp;|&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="anuncio">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <p><strong>Solar Plumbers</strong> es la plataforma de ventas de equipos de Energia Solar Termica de primeras marcas, distribución y capacitación en cálculos de instalación para plomeros interesados en iniciar en el negocio de la energía solar térmica.<p>
+                    <p>Cuenta con un <strong>Canal Profesional</strong> que funciona mediante un registro individual obligatorio, en el mismo encontraran todas las herramientas para que su experiencia solar sea mas amigable y segura, con todas las recomendaciones para trabajar con equipos que calientan el agua a temperaturas mayores de 92° Grados = VAPOR.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="por-que blanco">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="titulo">
+                        <h2>¿Por qué elegirnos?</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6 col-xl-3">
+                    <div class="container item">
+                        <i class="icon far fa-credit-card"></i>
+                        <p>Nos dedicamos a proporcionar a las familias y empresas sistemas de calentamiento solar de agua que sean asequibles y cumplan con los requisitos del mercado.</p>
+                        <a href="#">Leer Más >></a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-xl-3">
+                    <div class="container item">
+                        <i class="icon far fa-thumbs-up"></i>
+                        <p>Los productos que trabajamos son de excelente calidad y cumplen con los estándares relevantes de la industria y estar respaldados por un alto nivel de servicio al cliente y un soporte de garantía competitivo.</p>
+                        <a href="#">Leer Más >></a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-xl-3">
+                    <div class="container item">
+                        <i class="icon far fa-handshake"></i>
+                        <p>La experiencia de la compania en la industria termosolar, junto con nuestro compromiso nos da un enfoque en la mejora continua de productos, gestión y servicio, al tiempo que minimiza el impacto ambiental de todos los productos y operaciones.</p>
+                        <a href="#">Leer Más >></a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-xl-3">
+                    <div class="container item">
+                        <i class="icon fa fa-gem"></i>
+                        <p>Los productos están certificados con una gama de estándares de calidad y productos internacionales y locales. Además, las instalaciones de fabricación cuentan con la certificación de gestión de calidad ISO9001: 2008.</p>
+                        <a href="#">Leer Más >></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="servicios" id="servicios">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <div id="carouselServicios" class="carousel slide" data-ride="carousel" data-interval="3000">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="./assets/carousel/servicios-1.jpg?v=<?php echo $version;?>" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./assets/carousel/servicios-2.jpg?v=<?php echo $version;?>" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./assets/carousel/servicios-3.jpg?v=<?php echo $version;?>" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./assets/carousel/servicios-4.jpg?v=<?php echo $version;?>" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./assets/carousel/servicios-5.jpg?v=<?php echo $version;?>" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./assets/carousel/servicios-6.jpg?v=<?php echo $version;?>" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./assets/carousel/servicios-7.jpg?v=<?php echo $version;?>" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./assets/carousel/servicios-8.jpg?v=<?php echo $version;?>" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./assets/carousel/servicios-9.jpg?v=<?php echo $version;?>" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./assets/carousel/servicios-10.jpg?v=<?php echo $version;?>" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./assets/carousel/servicios-11.jpg?v=<?php echo $version;?>" class="d-block w-100" alt="...">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselServicios" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Anterior</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselServicios" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Siguiente</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="titulo">
+                        <h2>SERVICIOS</h2>
+                    </div>
+                    <ul class="list">
+                        <li class="support">
+                            <h3>Soporte a Proyectos</h3>
+                            <p>
+                                El soporte del proyecto se puede adaptar para satisfacer las necesidades del proyecto y también el nivel de experiencia del diseñador del sistema y los equipos de instalación.
+                            </p>
+                        </li>
+                        <li class="training">
+                            <h3>Capacitación</h3>
+                            <p>
+                                La capacitación técnica es esencial para los representantes de ventas, diseñadores de sistemas e instaladores.
+                            </p>
+                        </li>
+                        <li class="warranty">
+                            <h3>Garantía</h3>
+                            <p>Si hay un problema de calidad que afecte el funcionamiento normal del producto, trabajaremos en estrecha colaboración con el equipo local de ingeniería o instalación para garantizar que se solucione lo más rápido posible.</p>
+                        </li>
+                    </ul>
+                    <div class="d-flex justify-content-start btn-mas-productos-container">
+                        <a class="btn" href="#" title="Más Productos">VER MÁS&nbsp;&nbsp;|&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="titulo">
+                        <h2>Preguntas Frecuentes</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12" id="accordion">
+                    <div class="card">
+                        <div class="card-header" id="heading1">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                    <i class="far fa-question-circle"></i><p>1 ¿Es el calentamiento de agua por energía solar una alternativa viable al gas o electricidad?</p>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion">
+                            <div class="card-body">
+                                La energía solar no debe ser visto como una alternativa al gas o electricidad, sino más bien un suplemento. No reemplazara totalmente la necesidad de gas o eléctricidad de calefacción ya que hay a veces días con poca luz del sol. Un diseño correcto del sistema solar puede proporcionar 60% - 80% de las necesidades de agua caliente de un hogar. &nbsp;El sistema de agua caliente puede automatizarse fácilmente para que el agua caliente está garantizada independientemente de los niveles de la luz del sol.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading2">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                                    <i class="far fa-question-circle"></i><p>2 ¿Cuánto tiempo se tarda en recuperar mi inversión?</p>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion">
+                            <div class="card-body">
+                                Un sistema de termo tanque solar para agua caliente sanitaria donde no hay gas de red se recupera en 2 (dos) años como máximo. En el caso de un sistema de colectores solares para agua caliente sanitaria, calefacción central y climatizacion de piscina el tiempo de amortización sera de 3 &nbsp;1/2 años, actualmente con los costos del gas envasado. Con los costos del gas de red natural serán de 4 1/2 años.&nbsp; Definitivamente será un ahorro considerable durante la vida útil de 15 a 20 años del sistema solar de agua caliente elegido. Es fundamental que en la costa atlántica los equipos sean de acero galvanizado y acero inoxidable para evitar los efectos de la corrocion marina.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading3">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" data-target="#collapse3" aria-expanded="true" aria-controls="collapse3">
+                                    <i class="far fa-question-circle"></i><p>3 ¿Pueden utilizarse los colectores solares en condiciones frías?</p>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion">
+                            <div class="card-body">
+                                Sí los colectores solares de tubos con tecnologia Heat Pipe puede utilizarse a temperaturas extremadamente de frías - 45° centigrados. Sorprendentemente incluso a estas temperaturas el sistema es capaz de producir agua caliente con buena eficiencia debido a las propiedades del vacío de los tubos evacuados.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading4">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" data-target="#collapse4" aria-expanded="true" aria-controls="collapse4">
+                                    <i class="far fa-question-circle"></i><p>4 ¿Qué sucede si uno de los tubos se rompe?</p>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordion">
+                            <div class="card-body">
+                                Todos los tubos evacuados son muy fuertes y no se rompen fácilmente, pero si ocurre son muy fáciles de reemplazar. Aunque los colectores solares tienen la capacidad de operar con varios tubos rotos, se recomienda que los tubos rotos sean reemplazados de inmediato para mantener la eficiencia. Los tubos de repuesto están disponibles a través de nuestros distribuidores.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading5">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" data-target="#collapse5" aria-expanded="true" aria-controls="collapse5">
+                                    <i class="far fa-question-circle"></i><p>5 ¿El agua se calentará en un día nublado?</p>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordion">
+                            <div class="card-body">
+                                Sí sera calentada en un dia nublado a una temperatura menor que un dia soleado, pero todavía será capaz de proporcionar calefacción significativa. Si el día es muy nublado o esta &nbsp;lloviendo, entonces se compensara con &nbsp;gas o &nbsp;eléctriccidad para alcanzar la temparatura de trabajo del sistema de calefaccion central o &nbsp;puede ser requerido para mantener el agua de consumo sanitario a la temperatura deseada. Este sistema estará automatizado así no tiene que preocuparse por quedarse sin agua caliente en un día lluvioso.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading6">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" data-target="#collapse6" aria-expanded="true" aria-controls="collapse6">
+                                    <i class="far fa-question-circle"></i><p>6 ¿Puedo utilizar un colector solar con mi sistema existente de agua caliente?</p>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="collapse6" class="collapse" aria-labelledby="heading6" data-parent="#accordion">
+                            <div class="card-body">
+                                Normalmente sí. Simples modificación de válvulas y sistemas de control pueden usarse para permitir que el sistema solar acople a la entrada de agua fría existente de su termo tanque eléctrico o a gas. Ademas&nbsp;si el tanque no puede almacenar toda la produccion de agua caliente solar, puede instalarse un tanque de almacenamiento adicional.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading7">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" data-target="#collapse7" aria-expanded="true" aria-controls="collapse7">
+                                    <i class="far fa-question-circle"></i><p>7 ¿Los colectores solares se pueden montar sobre una superficie plana o inclinada?</p>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="collapse7" class="collapse" aria-labelledby="heading7" data-parent="#accordion">
+                            <div class="card-body">
+                                Sí puede montarse en un techo plano o en el suelo mediante el uso de una estructura plana del techo de acero inoxidable. En el caso de que el techo sea inclinado se adaptara a la pendiente del mismo o se adicionara la pendiente adecuada a su región geográfica para una mejor captación solar.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading8">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" data-target="#collapse8" aria-expanded="true" aria-controls="collapse8">
+                                    <i class="far fa-question-circle"></i><p>8 ¿Cómo protejo mi sistema solar durante temperaturas bajo cero?</p>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="collapse8" class="collapse" aria-labelledby="heading8" data-parent="#accordion">
+                            <div class="card-body">
+                                Si usted tiene un sistema que está funcionando en zonas con temperaturas bajo. La forma más fácil de prevenir congelación es utilizar un controlador con una baja temperatura de ajuste, así que cuando la temperatura del colector por debajo de cierta temperatura preestablecida 5° centigrados, la bomba circulará, calienta el colector con agua desde la parte inferior del tanque de almacenamiento. La bomba funcionará periódicamente, la frecuencia de la que dependerá de la temperatura exterior. En zonas extremadamente frías, puede ser apropiado un bucle cerrado utilizando una mezcla agua/glicol.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading9">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" data-target="#collapse9" aria-expanded="true" aria-controls="collapse9">
+                                    <i class="far fa-question-circle"></i><p>9 ¿El uso de colector solar será un riesgo de incendio durante el clima caluroso y seco?</p>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="collapse9" class="collapse" aria-labelledby="heading9" data-parent="#accordion">
+                            <div class="card-body">
+                                No. Los componentes del colector solar están diseñados para generar temperaturas de estancamiento de hasta 200 grados centigrados en verano y no es inflamable ni tan siquiera durante la luz del sol fuerte con la bomba de circulación apagada. Los tubos evacuados son frío al tacto incluso durante el verano.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading10">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" data-target="#collapse10" aria-expanded="true" aria-controls="collapse10">
+                                    <i class="far fa-question-circle"></i><p>10 ¿Qué mantenimientos requieren los colectores solares?</p>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="collapse10" class="collapse" aria-labelledby="heading10" data-parent="#accordion">
+                            <div class="card-body">
+                                En circunstancias normales no se requiere de un mantenimiento ordinario. Si se debe generar un mantenimiento anual para verificar la buloneria y chequear todos todos los componentes, Debido a la forma de los tubos estos se necesitaran lavar anualmente por causa del viento y lluvia. Un tubo roto deberá ser restituido por uno sano para evitar la perdida de la eficiencia de los mismos. Pero los colectores solares pueden funcionar con varios tubos rotos, sin embargo la eficacia se reducirá levemente.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading11">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" data-target="#collapse11" aria-expanded="true" aria-controls="collapse11">
+                                    <i class="far fa-question-circle"></i><p>11 ¿ Los Colectores solares pueden ser utilizados para una producción de agua caliente de gran escala?</p>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="collapse11" class="collapse" aria-labelledby="heading11" data-parent="#accordion">
+                            <div class="card-body">
+                                Sí. Los colectores solares pueden conectarse en serie o en paralelo para proporcionar agua caliente de producción a gran escala para aplicaciones comerciales tales como piscinas, colegios, hoteles, balnearios, edificios de propiedad horizontal o de oficinas. No hay ningún límite en el tamaño del sistema. &nbsp;El nivel de inversión de estos sistemas son altamente aconsejables actualmente debido al aumento de los costes de energía
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading12">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" data-target="#collapse12" aria-expanded="true" aria-controls="collapse12">
+                                    <i class="far fa-question-circle"></i><p>12 ¿Puedo calentar mi piscina o spa con colectores solares?</p>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="collapse12" class="collapse" aria-labelledby="heading12" data-parent="#accordion">
+                            <div class="card-body">
+                                Sí con colectores de tubos heat pipe se puede climatizar &nbsp;una piscina, spa, bañera de hidromasaje o residencial. Un intercambiador de calor de titanio se utiliza normalmente para separar el agua tratada de la piscina con cloro, del colector solar, evitando daños por corrosión de la tubería de cobre. Para cualquier piscina que se va a climatizar se debe utilizar una manta aislante para minimizar la evaporación y la pérdida de calor durante la noche.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading13">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" data-target="#collapse13" aria-expanded="true" aria-controls="collapse13">
+                                    <i class="far fa-question-circle"></i><p>13 ¿Son más eficientes los colectores Heat Pipe que los colectores planos?</p>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="collapse13" class="collapse" aria-labelledby="heading13" data-parent="#accordion">
+                            <div class="card-body">
+                                Al comparar los niveles de eficiencia pico puede parecer que hay poca diferencia entre las placas planas y tubos evacuados Heat Pipe. Pero debido a la forma cilíndrica del tubo evacuado, los tubos solares son capaces de seguir pasivamente el sol durante todo el día. Las placas planas sólo proporciona máxima energía al mediodía cuando el sol está perpendicular a la superficie del mismo. &nbsp;Ademas el vacio de aire del tubo Heat pipe reduce considerablemente la pérdida de calor del tubo por lo que la transferencia de calor al colector es mucho mayor. Como resultado el viento y temperaturas frías tienen menos efecto sobre la eficiencia del colector de tubo evacuado. Debido a las diversas ventajas del colector de tubo evacuado sobre colectores planos, un colector de 30 tubos Heat Pipe puede utilizarse para proporcionar el calentamiento de agua para&nbsp;una casa estándar de 4-5 personas, que normalmente requeriría un tanque de almacenamiento de 250 a 300 Litros.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="marcas">
+        <div class="container">
+            <div class="titulo">
+                <h2>NUESTRAS MARCAS</h2>
+            </div>
+            <div class="lista row text-center">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <a href="http://rheemsolar.com.ar/" title="Rheem Solar" target="_blank">
+                        <img class="img-fluid" src="./assets/marcas/rheem-solar.jpg?v=<?php echo $version;?>" alt="Rheem Solar">
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <a href="http://www.saiar.com.ar/" title="Saiar" target="_blank">
+                        <img class="img-fluid" src="./assets/marcas/saiar.jpg?v=<?php echo $version;?>" alt="Saiar">
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <a href="http://www.caleffi.com/" title="Caleffi Solar" target="_blank">
+                        <img class="img-fluid" src="./assets/marcas/caleffi-solar.jpg?v=<?php echo $version;?>" alt="Caleffi Solar">
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <a href="https://ar.grundfos.com/" title="Grundfos" target="_blank">
+                        <img class="img-fluid" src="./assets/marcas/grundfos.jpg?v=<?php echo $version;?>" alt="Grundfos">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="contacto" id="contacto">
+        <div class="container">
+            <div class="titulo">
+                <h2>CONTACTO</h2>                
+            </div>
+            <div class="subtitulo">
+            <p>Tu consulta no molesta. Te podemos ayudar!</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="formulario">
+                
+                        <span class="wpcf7-form-control-wrap your-name">
+                            <input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Tú nombre">
+                        </span><br>
+                        <span class="wpcf7-form-control-wrap your-email">
+                            <input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="Tú email">
+                        </span><br>
+                        <span class="wpcf7-form-control-wrap text-telefono">
+                            <input type="text" name="text-telefono" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Tú teléfono">
+                        </span><br>
+                        <span class="wpcf7-form-control-wrap your-message">
+                            <textarea name="your-message" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Tú mensaje..."></textarea>
+                        </span>
+                        <div class="contact-button text-center">
+                            <input type="button" value="Enviar" class="wpcf7-form-control wpcf7-submit btn"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <ul class="formas">				
+                        <li>
+                            <a target="_blank" href="https://api.whatsapp.com/send?phone=5492236189461&amp;text=Quiero%20recibir%20información"><i class="fab fa-whatsapp"></i> Venta teléfonica</a></li>
+                        <li>
+                            <a href="tel:+5492235289685" target="_blank"><i class="fa fa-phone"></i> +5492235289685</a></li>					
+                        <li>
+                            <a href="#"><i class="fa fa-map-marker"></i> Dorrego 2826 N° 3  - Mar del Plata - CP: 7600</a>
+                        </li>
+                        <li>
+                            
+                            <a href="mailto:info@solarplumbers.com.ar"><i class="fa fa-envelope"></i> info@solarplumbers.com.ar</a>
+                        </li>
+					</ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="medios-contacto d-none d-lg-flex d-xl-flex">
+        <ul class="onlineservice-fixed-list">
+            <li>
+                <div>
+                <a class="onlineService_e" rel="nofollow" href="mailto:info@solarplumbers.com.ar">
+                    <i class="fa fa-envelope"></i>
+                    <span>E-MAIL</span>
+                </a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a class="onlineService_t" rel="nofollow" href="tel:+5492235289685">
+                        <i class="fa fa-phone"></i>
+                        <span>Phone</span>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a class="onlineService_s" rel="nofollow" target="_blank" href="https://api.whatsapp.com/send?phone=5492236189461&amp;text=Quiero%20recibir%20información">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>Whats app</span>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-6 copyright text-left">
+                    <p><strong>Solar Plumbers</strong> - Copyright © 2020.&nbsp;Todos los derechos Reservados.</p>
+                </div>
+                <div class="col-6 redes text-right">
+                    <div class="social">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-play-circle"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+        // When the user scrolls the page, execute myFunction
+        window.onscroll = function() {myFunction()};
+
+        function myFunction() {
+            // Get the carousel
+            var carousel = document.getElementById("carousel-home");
+            var alto_carousel = carousel.offsetTop + carousel.offsetHeight;
+
+            // Get the header
+            var header = document.getElementById("nav");
+            var alto_header = header.offsetTop + header.offsetHeight;
+
+            // Get the offset position of the navbar
+            var sticky = (header.offsetTop + alto_carousel) - 200;
+
+            // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+            if (window.pageYOffset > sticky) {
+                $("header").addClass("fixed-top");
+            } else {
+                $("header").removeClass("fixed-top");
+            }
+        }
+    </script>
+</body>
+</html>

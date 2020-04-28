@@ -71,3 +71,9 @@ btnThemeDay.addEventListener("click", () => {
     //Cierro la lista
     themeChangeContainer.classList.remove("open");
 });
+
+
+function scrollDown(seccion) {
+    let elemento = document.getElementById(seccion);
+    window.scrollBy(0, elemento.offsetTop);
+}

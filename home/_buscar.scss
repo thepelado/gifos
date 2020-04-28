@@ -76,12 +76,13 @@
             }
         }
     }
-    .lista-btn-sugerencias {
+    .lista-btn-historial {
         margin-top: 12px;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: flex-start;
+        overflow: hidden;
         .btn {
             margin-left: 0;
             margin-right: 8px;
@@ -100,7 +101,7 @@
                 padding: 0 15px;
             }
         }
-        .lista-btn-sugerencias {
+        .lista-btn-historial {
             flex-wrap: wrap;
             align-items: flex-start;
             .btn {
