@@ -222,6 +222,29 @@ inputBusqueda.addEventListener("input", () => {
     }
 });
 
+inputBusqueda.addEventListener("keypress", (key) => {
+    if (key.keyCode === 13) {
+        event.preventDefault();
+        let search = inputBusqueda.value;
+        getSearch(search)
+            .then( respuesta => {
+                //Oculto tendencias y sugerencias
+                document.getElementById("section-sugerencias").classList.add("hidden");
+                document.getElementById("section-tendencias").classList.add("hidden");
+                //Inserto los resultados
+                insertSearchResults(search, respuesta);
+                //Limpio las sugerencias
+                let container = document.getElementById("lista-sugerencias");
+                container.innerHTML = "";
+                return respuesta;
+            })
+            .then (respuesta => {
+                saveSearch(search, respuesta);
+            });
+        return false;
+    }
+});
+
 function getSuggestions(palabra) {
 
     const found = fetch(suggestionsURL + '/' + palabra + '?api_key=' + apiKey)
