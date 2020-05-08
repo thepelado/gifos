@@ -1,4 +1,5 @@
 const userName = "thepelado88";
+const apiKey = "iyHgseyuU5J2JpKKZ495mg5KRf6M0Iqq";
 const subidaEndPoint = 'https://upload.giphy.com/v1/gifs?';
 const buscarProId = 'https://api.giphy.com/v1/gifs/';
 
