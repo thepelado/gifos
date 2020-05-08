@@ -102,7 +102,7 @@ function insertRandomResult() {
         elemento.innerHTML =
             '<div class="etiqueta gradient">' +
             '<p> ' + textoTitulo + '  </p>' +
-            '<img class="btn-cerrar" onclick="removeRandomSuggestion('+i+');" src = "../../assets/images/close.svg" alt = "#" > ' +
+            '<img class="btn-cerrar" onclick="removeRandomSuggestion('+i+');" src = "../assets/images/close.svg" alt = "#" > ' +
             '</div><img class="gif" src=' + arraySuggestions[i].url + ' alt="'+ textoTitulo +'" >' +
             '<button class="btn btn-ver-mas" onClick="getSearchResults(\''+ textoBoton +'\');">' +
             '<span class="text">Ver más...</span>' +
