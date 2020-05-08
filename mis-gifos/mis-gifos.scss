@@ -2,8 +2,80 @@ $mobile-break: 767px;
 
 .mis-gifos {    
     margin-top: 16px;
+    margin-bottom: 30px;
     .titulo {
         padding: 7px;
+    }
+    .mensaje {
+        padding: 75px 21.9% 75px 18.4%;
+        .container {
+            h2 {
+                font-size: 16px;
+                color: #110038;
+                letter-spacing: 0;
+                line-height: 22px;
+                margin-top: 8px;
+            }
+            .gradient {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                width: 100%;
+                p {
+                    color: #FFF;
+                    padding: 3.4px 7px 2.6px;
+                    width: 100%;
+                }
+                img {
+                    margin-right: 10px;
+                }
+            }
+            .cuerpo {
+                padding: 8px 11px;
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+            }
+            .informacion {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: flex-start;
+                .icono {
+                    width: 32px;
+                    height: 29px;
+                    margin-top: 30px;
+                    margin-left: 25px;
+                }
+                .texto {
+                    margin: 30px 16px 28px 16px;                
+                    h2 {
+                        font-size: 16px;
+                        letter-spacing: 0;
+                        line-height: 22px;
+                        font-weight: 900;
+                        margin-bottom: 17px;
+                    }
+                    ol {
+                        list-style: none;
+                        li {
+                            margin: 11px 0;
+                            counter-increment: item;
+                            &::before {
+                                content: counter(item) ") ";
+                                font-weight: 900;
+                            }                        
+                        }
+                    }
+                    strong {
+                        font-weight: 900;
+                    }
+                }
+            }
+        }
     }
     .resultado-mis-gifos {
         margin-top: 16px;

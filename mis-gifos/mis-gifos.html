@@ -41,11 +41,25 @@
             </button>
         </div>
     </nav>
-    <div class="main-container">
-        <section class="resultado mis-gifos" id="section-mis-gifos">            
+    <div class="main-container mis-gifos">
+        <section class="mensaje hidden" id="mensaje">
+            <div class="container">
+                <div class="gradient">
+                    <p>Atención</p>
+                </div>
+                <div class="informacion">
+                    <img src="../assets/images/info_img.png" class="icono" alt="icono">
+                    <div class="texto">
+                        <h2>Aquí podrás visualizar tus gifOS</h2>
+                        Para ello debes crearlos previamente desde la opcion <strong>Mis Guifos</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="resultado hidden" id="section-mis-gifos">            
             <div class="titulo">Mis guifos</div>
             <div class="resultado-mis-gifos" id="resultado-mis-gifos"></div>
-        </section>
+        </section>     
     </div>
     <script src="../js/common.js"></script>
     <script src="./mis-gifos.js"></script>

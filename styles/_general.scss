@@ -130,6 +130,37 @@ body {
     .main-container {
         padding: 0 100px;
     }
+    .mis-gifos {    
+        margin-top: 16px;
+        margin-bottom: 30px;
+        .titulo {
+            padding: 7px;
+        }
+        .resultado-mis-gifos {
+            margin-top: 16px;
+            display: grid;
+            grid-gap: 16px;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-flow: dense;
+            .item {
+                position: relative;
+                width: 100%;
+                height: auto;
+                padding:2px;
+                &.doble {
+                    grid-column: span 2; 
+                }
+                .container {
+                    padding: 0;
+                    border: 1px solid transparent; 
+                }
+                img {
+                    height: 298px;
+                    width: 100%;
+                }
+            }
+        }
+    }
 }
 
 @media screen and (max-width: $mobile-break) {

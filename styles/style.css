@@ -189,6 +189,46 @@ body .main-container {
   padding: 0 100px;
 }
 
+body .mis-gifos {
+  margin-top: 16px;
+  margin-bottom: 30px;
+}
+
+body .mis-gifos .titulo {
+  padding: 7px;
+}
+
+body .mis-gifos .resultado-mis-gifos {
+  margin-top: 16px;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 16px;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  grid-auto-flow: dense;
+}
+
+body .mis-gifos .resultado-mis-gifos .item {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 2px;
+}
+
+body .mis-gifos .resultado-mis-gifos .item.doble {
+  grid-column: span 2;
+}
+
+body .mis-gifos .resultado-mis-gifos .item .container {
+  padding: 0;
+  border: 1px solid transparent;
+}
+
+body .mis-gifos .resultado-mis-gifos .item img {
+  height: 298px;
+  width: 100%;
+}
+
 @media screen and (max-width: 767px) {
   body nav {
     -webkit-box-orient: vertical;

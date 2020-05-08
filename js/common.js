@@ -46,12 +46,19 @@ btnThemeDropdown.addEventListener("click", () => {
 });
 
 /* Theme Change */
+btnThemeDay.addEventListener("click", () => {
+    //Swicheo el Teheme
+    themeChange("day");
+    //Pongo el boton del theme seleccionado en Active
+    btnThemeNight.classList.remove("active");
+    btnThemeDay.classList.add("active");
+    //Cierro la lista
+    themeChangeContainer.classList.remove("open");
+});
+
 btnThemeNight.addEventListener("click", () => {
-    //Swichero el Teheme
-    document.body.classList.remove("day");
-    document.body.classList.add("night");
-    //Lo guardo en local storage
-    localStorage.setItem("theme", "night");
+    //Swicheo el Teheme
+    themeChange("night");
     //Pongo el boton del theme seleccionado en Active
     btnThemeDay.classList.remove("active");
     btnThemeNight.classList.add("active");
@@ -59,18 +66,12 @@ btnThemeNight.addEventListener("click", () => {
     themeChangeContainer.classList.remove("open");
 });
 
-btnThemeDay.addEventListener("click", () => {
-    //Swichero el Teheme
-    document.body.classList.remove("night");
-    document.body.classList.add("day");
+function themeChange(newClass) {
+    document.body.className = '';
+    document.body.classList.add(newClass);
     //Lo guardo en local storage
-    localStorage.setItem("theme", "day");
-    //Pongo el boton del theme seleccionado en Active
-    btnThemeDay.classList.add("active");
-    btnThemeNight.classList.remove("active");
-    //Cierro la lista
-    themeChangeContainer.classList.remove("open");
-});
+    localStorage.setItem("theme", newClass);
+}
 
 
 function scrollDown(seccion) {

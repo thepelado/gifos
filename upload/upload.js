@@ -14,7 +14,7 @@ var tiempoPreview = document.getElementById("tiempo-preview");
 var btnRepetirProceso = document.getElementById("btn-repetir-captura");
 var btnSubirGifOs = document.getElementById("btn-subir-gifo");
 var btnDescargarGifOs = document.getElementById("btn-descargar-gifo");
-var btnCopiarGifOs = document.getElementById("btn-descargar-gifo");
+var btnCopiarGifOs = document.getElementById("btn-copiar-enlace");
 
 var gifStream;
 var videoStream;
@@ -24,6 +24,7 @@ var horaDeFin;
 var duracion;
 var blob;
 var misGifOs = [];
+var uploader = new XMLHttpRequest();
 
 window.onload = function() {
     //Registro Visita
@@ -41,6 +42,19 @@ window.onload = function() {
     }
 };
 
+function visitCounter() {
+    if (!localStorage.getItem('visita')) {
+        localStorage.setItem('visita', parseInt('12765803'));
+    }
+    let visitas = parseInt(localStorage.getItem('visita')) + 1;
+    localStorage.setItem('visita',visitas);
+    //
+    visitas = visitas.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+    visitas = visitas.split('').reverse().join('').replace(/^[\.]/,'');
+    //
+    document.getElementById('contador-visitas').innerHTML = document.getElementById('contador-visitas').innerHTML + visitas;
+}
+
 /* Btn Cancelar */
 btnCancelar.addEventListener("click", () => {
     location.href = "../index.html";
@@ -57,12 +71,14 @@ btnComenzar.addEventListener("click", () => {
 
 function cancelarProceso() {    
     //
+    uploader.abort();
     btnGrabar.classList.remove("hidden");
     btnFinalizar.classList.add("hidden");
     tiempo.classList.add("hidden");
     document.getElementById("segundo-paso").classList.add("hidden");
     document.getElementById("tercer-paso").classList.add("hidden");
     document.getElementById("cuarto-paso").classList.add("hidden");
+    document.getElementById("quinto-paso").classList.add("hidden");
     //
     document.getElementById("primer-paso").classList.remove("hidden");
 }
@@ -215,12 +231,12 @@ function subirGif() {
     let URL = subidaEndPoint + '&api_key=' + apiKey + '&username=' + userName;
 
     // 1. Create a new XMLHttpRequest object
-    let xhr = new XMLHttpRequest();
-    xhr.responseType = 'json';
-    xhr.open('POST', URL);
-    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    uploader.responseType = 'json';
+    uploader.open('POST', URL);
+    uploader.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 
-    xhr.upload.addEventListener("progress", function (event) {
+    // 2. añado el evento progress para poder poner la barra de progreso
+    uploader.upload.addEventListener("progress", function (event) {
         if (event.lengthComputable) {
             //Me quedo con un digito solamente del % de subida para hacer equivalencia con mi barra
             var complete = (event.loaded / event.total * 100 | 0);
@@ -228,16 +244,15 @@ function subirGif() {
         }
     });
     
-    xhr.send(data);
+    uploader.send(data);
 
-    // 4. This will be called after the response is received
-    xhr.onload = function() {
-        if (xhr.status != 200) { // analyze HTTP status of the response
-            alert(`Error ${xhr.status}: ${xhr.statusText}`); // e.g. 404: Not Found
+    // 3. Cuando se recibe la respuesta
+    uploader.onload = function() {
+        if (uploader.status != 200) { // analyze HTTP status of the response
+            alert(`Error ${uploader.status}: ${uploader.statusText}`); // e.g. 404: Not Found
         } else { // show the result
-            let id = xhr.response.data.id;
-            console.log(xhr.response.data);
-            debugger;
+            let id = uploader.response.data.id;
+            console.log(uploader.response.data);
             if (id) {
                 guandarGifEnLocalStorage(id);
                 document.getElementById("cuarto-paso").classList.add("hidden");
@@ -246,7 +261,7 @@ function subirGif() {
         }
     };
 
-    xhr.onerror = function() {
+    uploader.onerror = function() {
         alert("Request failed");
     };
 }
@@ -265,7 +280,6 @@ function pintarBarra(porcentaje, cantCuadraditos, elemento) {
 }
 
 function resetBarra(elemento) {
-    debugger;
     let barra = elemento;
     let items = barra.getElementsByTagName("li");
     for (let i = 0; i < items.length; ++i) {

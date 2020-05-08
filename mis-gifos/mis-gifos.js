@@ -21,19 +21,22 @@ window.onload = function() {
 function showMyGifos() {
     if (localStorage.getItem("gifs"))
     {
+        document.getElementById("section-mis-gifos").classList.remove("hidden");
         let container = document.getElementById("resultado-mis-gifos");
         misGifOs = JSON.parse(localStorage.getItem("gifs"));
         misGifOs.forEach(gifo => {
             if (gifo) {
-                //Maqueto el contenido
-                let contenido = document.createElement("div");
-                contenido.setAttribute("class", "item");
-                contenido.innerHTML =
+                let content = document.createElement("div");
+                content.setAttribute("class", "item");
+                content.innerHTML =
                     '<div class="container">'+
                     '<img src=' + gifo + ' alt="#" >' +
                     '</div>';
-                container.appendChild(contenido);
+                container.appendChild(content);
             }
         });
+    }
+    else {
+        document.getElementById("mensaje").classList.remove("hidden");
     }
 }

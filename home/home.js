@@ -3,14 +3,13 @@ const searchEndpoint = 'https://api.giphy.com/v1/gifs/search?q=';
 const trendingEndpoint = 'https://api.giphy.com/v1/gifs/trending';
 const randomEndpoint = 'https://api.giphy.com/v1/gifs/random';
 const suggestionsURL = 'https://api.giphy.com/v1/tags/related';
-const cantOpcionesSugeredias = 3;
 
 var inputBusqueda = document.getElementById("txt-buscar");
 var btnBuscar = document.getElementById("btn-buscar");
 
-var arraySugerencias = new Array();
-var cantSugerencias = 4;
-var cantidadTendencia = 12;
+var arraySuggestions = new Array();
+var amountSuggestions = 4;
+var amountTrendings = 12;
 
 /* Cuando carga la pagina  busca las sugerencias y las tendencias */
 window.onload = function() {
@@ -38,11 +37,15 @@ window.onload = function() {
     btnBuscar.disabled = true;
 
     //Cargo Sugerencias 
-    for (let index = 0; index < cantSugerencias; index++) {
+    for (let index = 0; index < amountSuggestions; index++) {
         getRandomResult()
         .then (resdata => {
             let datos = resdata.data;
-            saveRandomResult({ url: datos.images.original.url, titulo: datos.title });
+            arraySuggestions.push({ url: datos.images.original.url, titulo: datos.title });
+            if (arraySuggestions.length == amountSuggestions) {
+                //Maqueto el contenido
+                insertRandomResult();
+            }
         })
         .catch(error => {
             console.log(error);
@@ -80,13 +83,6 @@ function getRandomResult() {
     return found;
 }
 
-function saveRandomResult(array) {
-    //Guardo en un array las sugerencias
-    arraySugerencias.push(array);
-    //Maqueto el contenido
-    insertRandomResult();
-}
-
 function insertRandomResult() {
 
     //Borro si tiene contenido
@@ -94,23 +90,25 @@ function insertRandomResult() {
     container.innerHTML = "";
 
     //Maqueto el contenido
-    for(let i=0; i < arraySugerencias.length; i++) {
+    for(let i=0; i < arraySuggestions.length; i++) {
 
-        let contenido = document.createElement("div");
         //Limpio el titulo
-        let titulo = getTagsForTitle(arraySugerencias[i].titulo);
-        let button = titulo.replace("#", " ");
-        //
-        contenido.setAttribute("class", "container sugerido");
-        contenido.innerHTML =
+        let textoTitulo = getTagsForTitle(arraySuggestions[i].titulo);
+        let textoBoton = textoTitulo.replace("#", " ");
+        // Creo el Contenedor del elemento
+        let elemento = document.createElement("div");
+        elemento.classList.add("container", "sugerido");
+          
+        elemento.innerHTML =
             '<div class="etiqueta gradient">' +
-            '<p> ' + titulo + '  </p>' +
+            '<p> ' + textoTitulo + '  </p>' +
             '<img class="btn-cerrar" onclick="removeRandomSuggestion('+i+');" src = "../../assets/images/close.svg" alt = "#" > ' +
-            '</div><img class="gif" src=' + arraySugerencias[i].url + ' alt="'+ titulo +'" >' +
-            '<button class="btn btn-ver-mas" id="btn-select-theme" onClick="getSearchResults(\''+ button +'\');">' +
+            '</div><img class="gif" src=' + arraySuggestions[i].url + ' alt="'+ textoTitulo +'" >' +
+            '<button class="btn btn-ver-mas" onClick="getSearchResults(\''+ textoBoton +'\');">' +
             '<span class="text">Ver más...</span>' +
             '</button>';
-        container.appendChild(contenido);
+
+        container.appendChild(elemento);
     }
 }
 
@@ -135,12 +133,12 @@ function getTagsForTitle(title) {
 
 function removeRandomSuggestion(index) {
     //Remuevo el item del arreglo
-    arraySugerencias.splice(index,1);
+    arraySuggestions.splice(index,1);
     //Solicito uno nuevo
     getRandomResult()
     .then (resdata => {
         let datos = resdata.data;
-        saveRandomResult({ url: datos.images.original.url, titulo: datos.title });
+        arraySuggestions.push({ url: datos.images.original.url, titulo: datos.title });
     })
     .catch(error => {
         console.log(error);
@@ -168,12 +166,12 @@ function insertTrendingResults(array) {
     let container = document.getElementById("resultado-tendencias");  
     let cont = 0;
     let contDobles = 0;
-    for (let i=0; i < array.length && cont < cantidadTendencia; i++) {
+    for (let i=0; i < array.length && cont < amountTrendings; i++) {
         //Maqueto el contenido
         let clase_doble = '';
         if (contDobles < 4 && (array[i].images.original.width >= (array[i].images.original.height * 1.4)))
         {
-            if (cont + 2 <= cantidadTendencia) {
+            if (cont + 2 <= amountTrendings) {
                 clase_doble = "doble";
                 contDobles++;
                 cont+=2;
@@ -203,14 +201,10 @@ inputBusqueda.addEventListener("input", () => {
 
     if (valor.length > 0) {
         document.getElementById("btn-buscar").disabled = false;
-        //muestro el boton eliminar ???
         getSuggestions(valor)
             .then( respuesta => updateSuggestions(respuesta));
-
     } else {
-        console.log("Vacio");
         document.getElementById("btn-buscar").disabled = true;
-        //escondo el boton eliminar ???
         //Oculto busqueda
         document.getElementById("section-resultados-busqueda").classList.add("hidden");
         //Blanqueo la lista de sugerencias y los botones        
@@ -225,28 +219,27 @@ inputBusqueda.addEventListener("input", () => {
 inputBusqueda.addEventListener("keypress", (key) => {
     if (key.keyCode === 13) {
         event.preventDefault();
-        let search = inputBusqueda.value;
-        getSearch(search)
+        let termino = inputBusqueda.value;
+        getSearch(termino)
             .then( respuesta => {
                 //Oculto tendencias y sugerencias
                 document.getElementById("section-sugerencias").classList.add("hidden");
                 document.getElementById("section-tendencias").classList.add("hidden");
                 //Inserto los resultados
-                insertSearchResults(search, respuesta);
+                insertSearchResults(termino, respuesta);
                 //Limpio las sugerencias
                 let container = document.getElementById("lista-sugerencias");
                 container.innerHTML = "";
                 return respuesta;
             })
             .then (respuesta => {
-                saveSearch(search, respuesta);
+                saveSearch(termino, respuesta);
             });
         return false;
     }
 });
 
 function getSuggestions(palabra) {
-
     const found = fetch(suggestionsURL + '/' + palabra + '?api_key=' + apiKey)
         .then(response => {
             return response.json();
@@ -262,22 +255,26 @@ function getSuggestions(palabra) {
 
 function updateSuggestions(obj) {
 
-    let resultado = obj.slice(0, cantSugerencias-1);
-    //Borro si tiene contenido y la muestro
-    let container = document.getElementById("lista-sugerencias");
-    container.innerHTML = "";
-    container.classList.remove("hidden");
+    let valor = inputBusqueda.value.trim();
 
-    //Armo los botones con las sugerencias
-    for (let i=0; i < cantSugerencias-1; i++)
-    {
-        //Maqueto el contenido
-        let contenido = document.createElement("div");
-        contenido.setAttribute("class", "sugerencia");
-        contenido.innerHTML = '<button name="btn-opt-sugerido" type="button" class="btn btn-sugerido" onClick="getSearchResults(\''+resultado[i].name+'\')">' +
-                            '<span>'+ resultado[i].name +'</span>' +
-                            '</button>';
-        container.appendChild(contenido);
+    if (valor.length > 0) { //Reviso por las dudas si borre rapido en el input
+        let resultado = obj.slice(0, amountSuggestions-1);
+        //Borro si tiene contenido y la muestro
+        let container = document.getElementById("lista-sugerencias");
+        container.innerHTML = "";
+        container.classList.remove("hidden");
+
+        //Armo los botones con las sugerencias
+        for (let i=0; i < amountSuggestions-1; i++)
+        {
+            //Maqueto el contenido
+            let contenido = document.createElement("div");
+            contenido.setAttribute("class", "sugerencia");
+            contenido.innerHTML = '<button name="btn-opt-sugerido" type="button" class="btn btn-sugerido" onClick="getSearchResults(\''+resultado[i].name+'\')">' +
+                                '<span>'+ resultado[i].name +'</span>' +
+                                '</button>';
+            container.appendChild(contenido);
+        }
     }
 }
 
@@ -296,29 +293,21 @@ function getSearch(search) {
 return found;
 }
 
-function getSearchResults(search) {
-    
-    //Asigno el valor a buscar a la caja por si aprete ver más en tendencia
-    inputBusqueda.value = search;
-
-    //Habilito el boton de busqueda
-    btnBuscar.disabled = false;
-
-    //Realizo la busqueda
-    getSearch(search)
+function getSearchResults(termino) {
+    getSearch(termino)
         .then( respuesta => {
             //Oculto tendencias y sugerencias
             document.getElementById("section-sugerencias").classList.add("hidden");
             document.getElementById("section-tendencias").classList.add("hidden");
             //Inserto los resultados
-            insertSearchResults(search, respuesta);
+            insertSearchResults(termino, respuesta);
             //Limpio las sugerencias
             let container = document.getElementById("lista-sugerencias");
             container.innerHTML = "";
             return respuesta;
         })
         .then (respuesta => {
-            saveSearch(search, respuesta);
+            saveSearch(termino, respuesta);
         });
 }
 
@@ -340,21 +329,22 @@ function saveSearch(term, searchResult)
 
 function updateSearchHistory() {
     let searchesHistory = JSON.parse(localStorage.getItem("search-results"));
+    if (searchesHistory && searchesHistory.length > 0) {
+        //Borro si tiene contenido y la muestro
+        let container = document.getElementById("lista-btn-historial");
+        container.innerHTML = "";
 
-    //Borro si tiene contenido y la muestro
-    let container = document.getElementById("lista-btn-historial");
-    container.innerHTML = "";
-
-    //Armo los botones con las sugerencias
-    for (let i=0; i < searchesHistory.length; i++)
-    {
-        let titulo = getTagsForTitle(searchesHistory[i].term);
-        //Maqueto el contenido
-        let contenido = document.createElement("div");
-        contenido.innerHTML = '<button name="btn-opt-sugerido" type="button" class="btn btn-ver-mas" onClick="getSearchHistoryResults(\''+searchesHistory[i].term+'\')">' +
-                            '<span class="text">'+ titulo +'</span>' +
-                            '</button>';
-        container.appendChild(contenido);
+        //Armo los botones con las sugerencias
+        for (let i=0; i < searchesHistory.length; i++)
+        {
+            let titulo = getTagsForTitle(searchesHistory[i].term);
+            //Maqueto el contenido
+            let contenido = document.createElement("div");
+            contenido.innerHTML = '<button name="btn-opt-sugerido" type="button" class="btn btn-ver-mas" onClick="getSearchHistoryResults(\''+searchesHistory[i].term+'\')">' +
+                                '<span class="text">'+ titulo +'</span>' +
+                                '</button>';
+            container.appendChild(contenido);
+        }
     }
 }
 
@@ -368,6 +358,10 @@ function getSearchHistoryResults(term) {
 }
 
 function insertSearchResults(criterio, resultado) {
+
+    inputBusqueda.value = criterio;
+    btnBuscar.disabled = false;
+
     //Quito la clase que oculta la sección
     let section = document.getElementById("section-resultados-busqueda"); 
     section.classList.remove("hidden");
