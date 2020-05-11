@@ -209,7 +209,6 @@ inputBusqueda.addEventListener("input", () => {
         document.getElementById("section-resultados-busqueda").classList.add("hidden");
         //Blanqueo la lista de sugerencias y los botones        
         document.getElementById("lista-sugerencias").innerHTML = "";
-        document.getElementById("lista-btn-historial").innerHTML = "";
         //Muestro sugerencias y tendencias
         document.getElementById("section-sugerencias").classList.remove("hidden");
         document.getElementById("section-tendencias").classList.remove("hidden");
