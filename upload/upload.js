@@ -229,7 +229,7 @@ function subirGif() {
     data = new FormData();
     data.append('file', blob, 'misGif.gif');
     
-    let URL = subidaEndPoint + '&api_key=' + apiKey + '&username=' + userName;
+    let URL = subidaEndPoint + 'api_key=' + apiKey + '&username=' + userName;
 
     // 1. Create a new XMLHttpRequest object
     uploader.responseType = 'json';

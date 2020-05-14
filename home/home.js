@@ -65,7 +65,11 @@ window.onload = function() {
 
 /* Search button event assing */
 btnBuscar.addEventListener("click", () => {
-  getSearchResults(inputBusqueda.value);
+    //Debo analizar si ya en mi localstorage no busque ese termino
+    //En caso afirmativo, cuento cantidad de consultas y genero offset al multiplicar por la cantidad de items de la respuesta
+    let offset = checkSearchTerm(inputBusqueda.value) * 20;
+    //
+    getSearchResults(inputBusqueda.value, offset);
 });
 
 /* Random Suggestions */
@@ -94,7 +98,7 @@ function insertRandomResult() {
 
         //Limpio el titulo
         let textoTitulo = getTagsForTitle(arraySuggestions[i].titulo);
-        let textoBoton = textoTitulo.replace("#", " ");
+        let textoBoton = textoTitulo.replace(/#/g, "");
         // Creo el Contenedor del elemento
         let elemento = document.createElement("div");
         elemento.classList.add("container", "sugerido");
@@ -196,7 +200,7 @@ function insertTrendingResults(array) {
 }
 
 /* Search Suggestions */
-inputBusqueda.addEventListener("input", () => {
+inputBusqueda.addEventListener("keyup", () => {
     let valor = inputBusqueda.value.trim();
 
     if (valor.length > 0) {
@@ -219,7 +223,11 @@ inputBusqueda.addEventListener("keypress", (key) => {
     if (key.keyCode === 13) {
         event.preventDefault();
         let termino = inputBusqueda.value;
-        getSearch(termino)
+        //Debo analizar si ya en mi localstorage no busque ese termino
+        //En caso afirmativo, cuento cantidad de consultas y genero offset al multiplicar por la cantidad de items de la respuesta
+        let offset = checkSearchTerm(termino) * 20;
+        //
+        getSearch(termino, offset)
             .then( respuesta => {
                 //Oculto tendencias y sugerencias
                 document.getElementById("section-sugerencias").classList.add("hidden");
@@ -256,30 +264,28 @@ function updateSuggestions(obj) {
 
     let valor = inputBusqueda.value.trim();
 
-    if (valor.length > 0) { //Reviso por las dudas si borre rapido en el input
-        let resultado = obj.slice(0, amountSuggestions-1);
-        //Borro si tiene contenido y la muestro
-        let container = document.getElementById("lista-sugerencias");
-        container.innerHTML = "";
-        container.classList.remove("hidden");
+    let resultado = obj.slice(0, amountSuggestions-1);
+    //Borro si tiene contenido y la muestro
+    let container = document.getElementById("lista-sugerencias");
+    container.innerHTML = "";
+    container.classList.remove("hidden");
 
-        //Armo los botones con las sugerencias
-        for (let i=0; i < amountSuggestions-1; i++)
-        {
-            //Maqueto el contenido
-            let contenido = document.createElement("div");
-            contenido.setAttribute("class", "sugerencia");
-            contenido.innerHTML = '<button name="btn-opt-sugerido" type="button" class="btn btn-sugerido" onClick="getSearchResults(\''+resultado[i].name+'\')">' +
-                                '<span>'+ resultado[i].name +'</span>' +
-                                '</button>';
-            container.appendChild(contenido);
-        }
+    //Armo los botones con las sugerencias
+    for (let i=0; i < amountSuggestions-1; i++)
+    {
+        //Maqueto el contenido
+        let contenido = document.createElement("div");
+        contenido.setAttribute("class", "sugerencia");
+        contenido.innerHTML = '<button name="btn-opt-sugerido" type="button" class="btn btn-sugerido" onClick="getSearchResults(\''+resultado[i].name+'\')">' +
+                            '<span>'+ resultado[i].name +'</span>' +
+                            '</button>';
+        container.appendChild(contenido);
     }
 }
 
 // Search Results
-function getSearch(search) {
-    const found = fetch(searchEndpoint + search + '&api_key=' + apiKey)
+function getSearch(search, offset) {
+    const found = fetch(searchEndpoint + search + '&offset=' + offset + '&api_key=' + apiKey)
     .then(response => {
         return response.json();
     })
@@ -292,8 +298,25 @@ function getSearch(search) {
 return found;
 }
 
+function checkSearchTerm(termino) {
+    let count = 0;
+    if (localStorage.getItem("search-results")) {
+        let busquedas = JSON.parse(localStorage.getItem("search-results"));
+        busquedas.forEach(element => {
+            if (element.term == termino) {
+                count++;
+            }
+        });
+    }
+    return count;
+}
+
 function getSearchResults(termino) {
-    getSearch(termino)
+    //Debo analizar si ya en mi localstorage no busque ese termino
+    //En caso afirmativo, cuento cantidad de consultas y genero offset al multiplicar por la cantidad de items de la respuesta
+    let offset = checkSearchTerm(termino) * 20;
+    //
+    getSearch(termino, offset)
         .then( respuesta => {
             //Oculto tendencias y sugerencias
             document.getElementById("section-sugerencias").classList.add("hidden");
@@ -339,7 +362,7 @@ function updateSearchHistory() {
             let titulo = getTagsForTitle(searchesHistory[i].term);
             //Maqueto el contenido
             let contenido = document.createElement("div");
-            contenido.innerHTML = '<button name="btn-opt-sugerido" type="button" class="btn btn-ver-mas" onClick="getSearchHistoryResults(\''+searchesHistory[i].term+'\')">' +
+            contenido.innerHTML = '<button name="btn-opt-sugerido" type="button" class="btn btn-ver-mas" onClick="getSearchHistoryResults(\''+searchesHistory[i].term+'\', '+ i +')">' +
                                 '<span class="text">'+ titulo +'</span>' +
                                 '</button>';
             container.appendChild(contenido);
@@ -347,11 +370,11 @@ function updateSearchHistory() {
     }
 }
 
-function getSearchHistoryResults(term) {
+function getSearchHistoryResults(term, index) {
 
     let searchesHistory = JSON.parse(localStorage.getItem("search-results"));
-    let historial = searchesHistory.find(query => query.term == term);
-    if (historial) {
+    let historial = searchesHistory[index];
+    if (historial && historial.term == term) {
         insertSearchResults(historial.term, historial.result);
     }
 }

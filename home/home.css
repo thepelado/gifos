@@ -120,7 +120,7 @@
 }
 
 .buscar .lista-btn-historial {
-  margin-top: 12px;
+  max-width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -134,12 +134,14 @@
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  overflow: hidden;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .buscar .lista-btn-historial .btn {
   margin-left: 0;
   margin-right: 8px;
+  margin-top: 12px;
 }
 
 .buscar .lista-btn-historial .btn .text {
