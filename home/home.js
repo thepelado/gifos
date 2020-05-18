@@ -369,12 +369,13 @@ function removeSearchHistory(index)
 }
 
 function updateSearchHistory() {
+    debugger;
+    //Borro si tiene contenido y la muestro
+    let container = document.getElementById("lista-btn-historial");
+    container.innerHTML = "";
+
     let searchesHistory = JSON.parse(localStorage.getItem("search-results"));
     if (searchesHistory && searchesHistory.length > 0) {
-        //Borro si tiene contenido y la muestro
-        let container = document.getElementById("lista-btn-historial");
-        container.innerHTML = "";
-
         //Armo los botones con las sugerencias
         for (let i=0; i < searchesHistory.length; i++)
         {
