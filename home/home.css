@@ -31,6 +31,12 @@
   line-height: 22px;
 }
 
+.buscar form .btn-clear-search {
+  position: absolute;
+  right: 150px;
+  cursor: pointer;
+}
+
 .buscar form .btn {
   margin-left: 8px;
   border-color: #808080;
@@ -138,6 +144,22 @@
       flex-wrap: wrap;
 }
 
+.buscar .lista-btn-historial .btn-ver-mas {
+  position: relative;
+}
+
+.buscar .lista-btn-historial .btn-ver-mas:hover .btn-cerrar {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  display: block;
+  cursor: pointer;
+}
+
+.buscar .lista-btn-historial .btn-ver-mas .btn-cerrar {
+  display: none;
+}
+
 .buscar .lista-btn-historial .btn {
   margin-left: 0;
   margin-right: 8px;
@@ -167,6 +189,9 @@
   }
   .buscar form .btn .text {
     display: none;
+  }
+  .buscar form .btn-clear-search {
+    right: 80px;
   }
 }
 

@@ -16,6 +16,11 @@
             font-size: 16px;
             line-height: 22px;
         }
+        .btn-clear-search {
+            position: absolute;
+            right: 150px;
+            cursor: pointer;
+        }
         .btn {
             margin-left: 8px;
             border-color: #808080;
@@ -83,6 +88,21 @@
         align-items: center;
         justify-content: flex-start;
         flex-wrap: wrap;
+        .btn-ver-mas { 
+            position: relative;
+            &:hover {
+                .btn-cerrar {
+                    position: absolute;
+                    top: 2px;
+                    right: 2px;
+                    display: block;
+                    cursor: pointer;
+                }
+            }
+            .btn-cerrar {
+                display: none;
+            }
+        }
         .btn {
             margin-left: 0;
             margin-right: 8px;
@@ -114,6 +134,9 @@
                 .text {
                     display: none;
                 }
+            }
+            .btn-clear-search {
+                right: 80px;
             }
         }
     }

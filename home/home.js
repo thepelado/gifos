@@ -5,6 +5,7 @@ const randomEndpoint = 'https://api.giphy.com/v1/gifs/random';
 const suggestionsURL = 'https://api.giphy.com/v1/tags/related';
 
 var inputBusqueda = document.getElementById("txt-buscar");
+var btnClearSearch = document.getElementById("btn-clear-search");
 var btnBuscar = document.getElementById("btn-buscar");
 
 var arraySuggestions = new Array();
@@ -205,19 +206,28 @@ inputBusqueda.addEventListener("keyup", () => {
 
     if (valor.length > 0) {
         document.getElementById("btn-buscar").disabled = false;
+        if (btnClearSearch.classList.contains("hidden")) {
+            btnClearSearch.classList.remove("hidden");
+        }
         getSuggestions(valor)
             .then( respuesta => updateSuggestions(respuesta));
     } else {
-        document.getElementById("btn-buscar").disabled = true;
-        //Oculto busqueda
-        document.getElementById("section-resultados-busqueda").classList.add("hidden");
-        //Blanqueo la lista de sugerencias y los botones        
-        document.getElementById("lista-sugerencias").innerHTML = "";
-        //Muestro sugerencias y tendencias
-        document.getElementById("section-sugerencias").classList.remove("hidden");
-        document.getElementById("section-tendencias").classList.remove("hidden");
+        clearSearch();
     }
 });
+
+function clearSearch() {
+    document.getElementById("btn-buscar").disabled = true;
+    inputBusqueda.value = "";
+    btnClearSearch.classList.add("hidden");
+    //Oculto busqueda
+    document.getElementById("section-resultados-busqueda").classList.add("hidden");
+    //Blanqueo la lista de sugerencias y los botones        
+    document.getElementById("lista-sugerencias").innerHTML = "";
+    //Muestro sugerencias y tendencias
+    document.getElementById("section-sugerencias").classList.remove("hidden");
+    document.getElementById("section-tendencias").classList.remove("hidden");
+}
 
 inputBusqueda.addEventListener("keypress", (key) => {
     if (key.keyCode === 13) {
@@ -240,7 +250,7 @@ inputBusqueda.addEventListener("keypress", (key) => {
                 return respuesta;
             })
             .then (respuesta => {
-                saveSearch(termino, respuesta);
+                saveSearchHistory(termino, respuesta);
             });
         return false;
     }
@@ -329,11 +339,11 @@ function getSearchResults(termino) {
             return respuesta;
         })
         .then (respuesta => {
-            saveSearch(termino, respuesta);
+            saveSearchHistory(termino, respuesta);
         });
 }
 
-function saveSearch(term, searchResult)
+function saveSearchHistory(term, searchResult)
 {
     let newItem = { term, result: searchResult };
     if (localStorage.getItem("search-results")) //Si hay theme
@@ -346,6 +356,15 @@ function saveSearch(term, searchResult)
     {
         localStorage.setItem("search-results", JSON.stringify([newItem]));
     }
+    updateSearchHistory();
+}
+
+function removeSearchHistory(index)
+{
+    debugger;
+    let searchesHistory = JSON.parse(localStorage.getItem("search-results"));
+    searchesHistory.splice(index,1);
+    localStorage.setItem("search-results", JSON.stringify(searchesHistory));
     updateSearchHistory();
 }
 
@@ -362,8 +381,9 @@ function updateSearchHistory() {
             let titulo = getTagsForTitle(searchesHistory[i].term);
             //Maqueto el contenido
             let contenido = document.createElement("div");
-            contenido.innerHTML = '<button name="btn-opt-sugerido" type="button" class="btn btn-ver-mas" onClick="getSearchHistoryResults(\''+searchesHistory[i].term+'\', '+ i +')">' +
-                                '<span class="text">'+ titulo +'</span>' +
+            contenido.innerHTML = '<button name="btn-opt-sugerido" type="button" class="btn btn-ver-mas">' +
+                                '<img class="btn-cerrar" onclick="removeSearchHistory('+ i +');" src="../assets/images/close.svg" alt="#"></img>' +
+                                '<span class="text" onClick="getSearchHistoryResults(\''+searchesHistory[i].term+'\', '+ i +')">'+ titulo +'</span>' +
                                 '</button>';
             container.appendChild(contenido);
         }
