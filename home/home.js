@@ -144,6 +144,7 @@ function removeRandomSuggestion(index) {
     .then (resdata => {
         let datos = resdata.data;
         arraySuggestions.push({ url: datos.images.original.url, titulo: datos.title });
+        insertRandomResult();        
     })
     .catch(error => {
         console.log(error);
@@ -361,7 +362,6 @@ function saveSearchHistory(term, searchResult)
 
 function removeSearchHistory(index)
 {
-    debugger;
     let searchesHistory = JSON.parse(localStorage.getItem("search-results"));
     searchesHistory.splice(index,1);
     localStorage.setItem("search-results", JSON.stringify(searchesHistory));
