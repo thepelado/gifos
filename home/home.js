@@ -369,7 +369,6 @@ function removeSearchHistory(index)
 }
 
 function updateSearchHistory() {
-    debugger;
     //Borro si tiene contenido y la muestro
     let container = document.getElementById("lista-btn-historial");
     container.innerHTML = "";
