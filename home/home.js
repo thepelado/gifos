@@ -402,6 +402,7 @@ function getSearchHistoryResults(term, index) {
 function insertSearchResults(criterio, resultado) {
 
     inputBusqueda.value = criterio;
+    btnClearSearch.classList.remove("hidden");
     btnBuscar.disabled = false;
 
     //Quito la clase que oculta la sección
