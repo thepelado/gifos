@@ -76,5 +76,5 @@ function themeChange(newClass) {
 
 function scrollDown(seccion) {
     let elemento = document.getElementById(seccion);
-    window.scrollBy(0, elemento.offsetTop);
+    window.scrollBy(0, elemento.offsetTop - 25);
 }

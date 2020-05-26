@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -8,6 +9,7 @@
         name="description"
         content="Proyecto GifOS para la carrera de desarrollo web full stack">
     <link href="https://fonts.googleapis.com/css?family=Chakra+Petch&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../assets/images/globe_img.png" type="image/x-icon">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="./home.css">
     <title>Acamica - GifOS</title>
@@ -31,7 +33,7 @@
                         <span class="underline">S</span>ailor day
                     </button>
                     <button class="btn btn-theme" id="theme-night">
-                        <span class="underline">S</span>ailor night</span>
+                        <span class="underline">S</span>ailor night
                     </button>
                 </div>
             </div>
@@ -44,9 +46,9 @@
         <section class="buscar">
             <div class="container">
                 <p class="gradient">Buscar</p>
-                <form name="buscador" action="" id="form-busqueda">
+                <form name="buscador" id="form-busqueda">
                     <input name="txt-buscar" id="txt-buscar" class="shadow" type="text" placeholder="Busca gifs, hashtags, temas, busca lo que quieras…">
-                    <img id="btn-clear-search" class="btn-clear-search hidden" onclick="clearSearch();" src="../assets/images/close.svg" alt="#"></img>
+                    <img id="btn-clear-search" class="btn-clear-search hidden" onclick="clearSearch();" src="../assets/images/close.svg" alt="#">                    
                     <button name="btn-buscar" id="btn-buscar" type="button" class="btn btn-primary btn-buscar">
                         <i class="lupa"></i>
                         <span class="text">                            
@@ -80,6 +82,9 @@
             <div class="resultado-tendencias" id="resultado-tendencias">
             </div>
         </section>
+        <button onclick="topFunction()" class="btn btn-primary btn-to-top" id="btn-to-top" title="Volver al inicio">
+            <span></span>
+        </button>
     </div>
     <script src="../js/common.js"></script>
     <script src="./home.js"></script>

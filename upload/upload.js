@@ -253,7 +253,6 @@ function subirGif() {
             alert(`Error ${uploader.status}: ${uploader.statusText}`); // e.g. 404: Not Found
         } else { // show the result
             let id = uploader.response.data.id;
-            console.log(uploader.response.data);
             if (id) {
                 guandarGifEnLocalStorage(id);
                 document.getElementById("cuarto-paso").classList.add("hidden");
