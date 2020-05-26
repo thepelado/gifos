@@ -12,23 +12,6 @@ var arraySuggestions = new Array();
 var amountSuggestions = 4;
 var amountTrendings = 12;
 
-/* Back to top */
-var btnToTop = document.getElementById('btn-to-top');
-window.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 60) {
-    btnToTop.style.display = "block";
-  } else {
-    btnToTop.style.display = "none";
-  }
-}
-
-function topFunction() {
-  document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-}
-
 /* Cuando carga la pagina  busca las sugerencias y las tendencias */
 window.onload = function() {
     //Registro Visita
