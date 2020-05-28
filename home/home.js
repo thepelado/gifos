@@ -327,6 +327,7 @@ function getSearchResults(termino) {
     //En caso afirmativo, cuento cantidad de consultas y genero offset al multiplicar por la cantidad de items de la respuesta
     let offset = checkSearchTerm(termino) * 20;
     //
+    if (termino && termino.length > 0) {
     getSearch(termino, offset)
         .then( respuesta => {
             //Oculto tendencias y sugerencias
@@ -342,6 +343,7 @@ function getSearchResults(termino) {
         .then (respuesta => {
             saveSearchHistory(termino, respuesta);
         });
+    }
 }
 
 function saveSearchHistory(term, searchResult)
